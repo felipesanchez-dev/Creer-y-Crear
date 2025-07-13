@@ -1,0 +1,180 @@
+---
+import Sponsor from "@/components/Sponsor.astro"
+import JuanseBlack from "@/assets/avatar.jpg"
+
+import { Image } from "astro:assets"
+---
+
+<div class="relative -mt-16 w-full overflow-hidden bg-gradient-to-b py-4 text-center">
+  <div class="container mx-auto px-4">
+    <div class="animate-float-1 relative z-10 mx-auto flex justify-center">
+      <div
+        class="inline-flex flex-wrap items-center justify-center gap-x-4 gap-y-4 whitespace-nowrap"
+      >
+        <div class="flex flex-col items-center rounded-[2rem] bg-white px-5 py-3 shadow-lg">
+          <h3 class="mb-2 text-2xl font-semibold">Patrocinadores oficiales</h3>
+          <div class="flex flex-wrap items-center justify-center gap-2">
+            <Sponsor href="#" isOfficial>
+              <Image
+                src={JuanseBlack}
+                alt="Juanse Black"
+                title="Juanse Black"
+                width="90"
+                height="27"
+                class="inline-block w-14 transition-transform group-hover:scale-110"
+                style={{ borderRadius: "50%" }}
+              />
+            </Sponsor>
+            <Sponsor href="#" isOfficial>
+              <Image
+                src={JuanseBlack}
+                alt="Juanse Black"
+                title="Juanse Black"
+                width="90"
+                height="27"
+                class="inline-block w-14 transition-transform group-hover:scale-110"
+                style={{ borderRadius: "50%" }}
+              />
+            </Sponsor>
+            <Sponsor href="#" isOfficial>
+              <Image
+                src={JuanseBlack}
+                alt="Juanse Black"
+                title="Juanse Black"
+                width="90"
+                height="27"
+                class="inline-block w-14 transition-transform group-hover:scale-110"
+                style={{ borderRadius: "50%" }}
+              />
+            </Sponsor>
+            <Sponsor href="#">
+              <Image
+                src={JuanseBlack}
+                alt="Juanse Black"
+                title="Juanse Black"
+                width="90"
+                height="27"
+                class="inline-block w-14 transition-transform group-hover:scale-110"
+                style={{ borderRadius: "50%" }}
+              />
+            </Sponsor>
+            <Sponsor href="#" isOfficial>
+              <Image
+                src={JuanseBlack}
+                alt="Juanse Black"
+                title="Juanse Black"
+                width="90"
+                height="27"
+                class="inline-block w-14 transition-transform group-hover:scale-110"
+                style={{ borderRadius: "50%" }}
+              />
+            </Sponsor>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bubble bubble-1"></div>
+    <div class="bubble bubble-2"></div>
+    <div class="bubble bubble-3"></div>
+    <div class="bubble bubble-4"></div>
+    <div class="bubble bubble-5"></div>
+  </div>
+</div>
+
+<style>
+  @keyframes float-1 {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  @keyframes float-2 {
+    0% {
+      transform: translateY(-5px);
+    }
+    50% {
+      transform: translateY(5px);
+    }
+    100% {
+      transform: translateY(-5px);
+    }
+  }
+
+  .animate-float-1 {
+    animation: float-1 6s ease-in-out infinite;
+  }
+
+  .animate-float-2 {
+    animation: float-2 7s ease-in-out infinite;
+  }
+
+  .bubble {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    animation: bubble-rise linear infinite;
+  }
+
+  .bubble-1 {
+    width: 40px;
+    height: 40px;
+    left: 10%;
+    bottom: -20px;
+    animation-duration: 8s;
+  }
+
+  .bubble-2 {
+    width: 20px;
+    height: 20px;
+    left: 20%;
+    bottom: -10px;
+    animation-duration: 5s;
+    animation-delay: 1s;
+  }
+
+  .bubble-3 {
+    width: 30px;
+    height: 30px;
+    left: 60%;
+    bottom: -15px;
+    animation-duration: 7s;
+    animation-delay: 2s;
+  }
+
+  .bubble-4 {
+    width: 15px;
+    height: 15px;
+    left: 80%;
+    bottom: -8px;
+    animation-duration: 6s;
+    animation-delay: 3s;
+  }
+
+  .bubble-5 {
+    width: 25px;
+    height: 25px;
+    left: 40%;
+    bottom: -12px;
+    animation-duration: 9s;
+    animation-delay: 4s;
+  }
+
+  @keyframes bubble-rise {
+    0% {
+      transform: translateY(0) scale(1);
+      opacity: 0;
+    }
+    20% {
+      opacity: 0.8;
+    }
+    100% {
+      transform: translateY(-100vh) scale(1.5);
+      opacity: 0;
+    }
+  }
+</style>

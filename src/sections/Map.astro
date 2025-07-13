@@ -1,0 +1,110 @@
+---
+import Uber from "@/assets/uber.webp"
+
+import LeafletMap from "@/components/LeafletMap.astro"
+import BubbleBackground from "@/components/BubbleBackground.astro"
+import WaveSeparator from "@/components/WaveSeparator.astro"
+import { lolalolitalandGeoJSON, potaBlavaGeoJSON } from "@/consts/geoJSONData.ts"
+import { Image } from "astro:assets"
+---
+
+<WaveSeparator bottomColor="var(--color-primary)" hasBubbles />
+
+<section id="mapa" class="bg-theme-blue relative py-12 pb-24">
+  <BubbleBackground />
+  <h2
+    class="mx-auto flex flex-row items-center justify-center gap-x-4 py-4 text-left text-lg font-semibold tracking-tight text-balance text-white md:gap-x-8 md:py-6 md:text-2xl lg:py-8 lg:pb-4 lg:text-3xl xl:text-4xl"
+  >
+    ¡Nos vemos aquí!
+  </h2>
+  <h3 class="flex flex-col items-center justify-center gap-1.5 text-white md:flex-row">
+    Lola Lolita Land se celebra en <a
+      href="https://maps.app.goo.gl/QEWvh6e1cAZoqhCS7"
+      target="_blank"
+      rel="noopener"
+      class="hover:text-primary animate-ease-in-out inline-block max-w-full rounded-lg bg-pink-200 px-2 py-1 text-center break-words text-pink-950 transition hover:bg-white"
+      >Aquopolis Villanueva de la Cañada</a
+    >
+  </h3>
+
+  <div class="m-auto mt-4 flex max-w-[1315px] flex-row flex-wrap gap-8 p-4">
+    <div class="relative h-[630px] min-w-[300px] flex-1 overflow-hidden rounded-[2rem] bg-black">
+      <LeafletMap
+        latitude={40.45673263671421}
+        longitude={-3.990346247363024}
+        zoom={16}
+        tileLayer="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
+        attribution=`<a class="mr-5" href="http://www.openstreetmap.org/">OpenStreetMap</a>`
+        geoJSON={[
+          { data: lolalolitalandGeoJSON, color: "var(--color-primary)" },
+          { data: potaBlavaGeoJSON, color: "green" },
+        ]}
+      />
+    </div>
+    <div
+      class="flex w-full flex-shrink-0 flex-col gap-y-8 overflow-hidden md:w-[375px] lg:w-[550px]"
+    >
+      <div class="flex flex-col gap-2 px-4">
+        <h3
+          class="mb-2 flex w-fit flex-0 items-center gap-x-1 rounded-[2rem] bg-white px-4 py-2 text-base font-bold text-black"
+        >
+          Cómo llegar con <a
+            target="_blank"
+            rel="noopener"
+            href="https://www.uber.com/es/es-es/ride/?utm_source=LolaLolitaLand"
+          >
+            <Image
+              src={Uber}
+              title="Uber"
+              alt="Uber"
+              class="-mt-1 inline-block w-14 transition-transform group-hover:scale-110"
+            />
+          </a>
+        </h3>
+        <p class="text-white">
+          ¿Primera vez con UBER Teens? ¡Tienes un 50% de descuento pillando tu viaje a Lola Lolita
+          land!<br />
+          <span class="font-semibold"
+            >Código: <span class="text-primary-light">UBER_X_LOLALOLITA</span></span
+          >
+        </p>
+        <p class="text-xs text-white/90">
+          Te recogen en la entrada del Aquopolis. Más fácil, ¡ni hecho por nosotras!
+        </p>
+      </div>
+      {/* TRANSPORTE PÚBLICO */}
+      <div class="flex flex-col gap-2 px-4">
+        <h3
+          class="mb-2 flex w-fit flex-0 items-center gap-x-1 rounded-[2rem] bg-white px-4 py-2 text-base font-bold text-black"
+        >
+          Llegar en transporte público
+        </h3>
+        <p class="text-white">
+          Coge el bus 627 desde Moncloa (nivel -1, isla 1) y en nada estás en el parque.
+        </p>
+        <h4 class="font-semibold text-white">¿Vienes de fuera de Madrid?</h4>
+        <p class="text-white">
+          Desde Atocha puedes pillar el bus 001 (<span class="italic">¡gratis!</span>) hasta
+          Moncloa, o bajarte en metro directo al intercambiador.
+        </p>
+      </div>
+      {/* COCHE PROPIO */}
+      <div class="flex flex-col gap-2 px-4">
+        <h3
+          class="mb-2 flex w-fit flex-0 items-center gap-x-1 rounded-[2rem] bg-white px-4 py-2 text-base font-bold text-black"
+        >
+          Cómo llegar en coche
+        </h3>
+        <ul class="list-disc pl-6 text-left text-white">
+          <li><b>M-600:</b> conecta El Escorial con Brunete</li>
+          <li><b>M-501:</b> une la M-40 / M-50 con la M-600</li>
+          <li><b>M-503:</b> va desde Villanueva de la Cañada hasta la M-50 / Majadahonda</li>
+        </ul>
+        <p class="text-white">Y tranqui, ¡Aquopolis tiene parking!</p>
+        <p class="mt-2 text-xs text-white">
+          Pon buena música, activa el GPS y... ¡nos vemos en Lola Lolita land!
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
