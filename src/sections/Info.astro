@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets"
-import CalendarImage from "@/assets/images/calendario.webp"
+import CalendarImage from "@/assets/images/calendario.png"
+import esnecario from "@/assets/images/multi.webp"
 ---
 
 <div class="mx-auto max-w-2xl p-4 pb-32 lg:max-w-6xl">
@@ -46,7 +47,7 @@ import CalendarImage from "@/assets/images/calendario.webp"
       </span>
     </span>
   </div>
-  <!-- <div
+  <div
     class="view-animate-[--subjectReveal] animate-zoom-in animate-range-[entry_0%_cover_20%] grid scroll-mt-[31rem] grid-cols-1 gap-4 pt-10 sm:mt-4 md:scroll-mt-[34rem] lg:scroll-mt-[26rem] lg:grid-cols-6"
     id="info"
   >
@@ -64,19 +65,17 @@ import CalendarImage from "@/assets/images/calendario.webp"
           />
         </div>
         <div class="p-4 pt-4 sm:p-6 md:p-8 lg:p-10">
-          <h3 class="text-primary text-center text-sm/4 font-semibold lg:text-left">
-            14 y 15 de junio
-          </h3>
+          <h3 class="text-center text-2xl font-semibold lg:text-left">12 julio</h3>
           <p
             class="mx-auto mt-2 max-w-[50ch] text-center text-xs/5 text-balance text-gray-600 sm:text-sm/6 lg:mx-0 lg:text-left"
           >
-            Apunta en tu calendario, porque LolaLolita Land abre sus puertas el 14 y 15 de junio
-            para darle la bienvenida al verano.
+            Apunta en tu calendario, porque Creer y Crear abre sus puertas el 12 de julio ven a
+            disfrutar de un día lleno de magia, diversión y sorpresas. ¡No te lo pierdas!
           </p>
           <div class="mt-4 flex flex-col justify-start gap-2 lg:flex-row lg:gap-4">
             <a
-              class="group inline-flex min-h-[38px] w-full items-center justify-center space-x-1 rounded-lg bg-gradient-to-br from-[#ff0695]/90 to-[#ff0695] p-1 px-3 text-center text-xs/4 break-words text-white shadow-[inset_0px_0px_8px_rgba(255,255,255,0.2)] transition-all duration-300 ease-out hover:scale-105 hover:from-[#ff0695] hover:to-[#ff0695]/90 hover:shadow-[inset_0px_0px_12px_rgba(255,255,255,0.3)] active:scale-100 lg:w-auto"
-              href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Lola+Lolita+Land+🌸&dates=20250614/20250616&details=La+experiencia+más+refrescante.&location=Aquopolis+Villanueva+de+la+Cañada"
+              class="group inline-flex min-h-[42px] w-full items-center justify-center space-x-2 rounded-full bg-gradient-to-br from-[#3b0764] via-[#312e81] to-[#1e3a8a] px-5 py-2 text-sm font-semibold tracking-wide text-white shadow-lg transition-all duration-300 ease-in-out hover:scale-105 hover:from-[#4c1d95] hover:to-[#1e40af] active:scale-100 lg:w-auto"
+              href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Creer+y+Crear+x+JuanseBlack&dates=20250712/20250713&details=Un+espacio+para+compartir+propósito+y+conectar+con+otros.&location=Ibagué,+Tolima"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -109,9 +108,9 @@ import CalendarImage from "@/assets/images/calendario.webp"
             </a>
 
             <a
-              class="group inline-flex min-h-[38px] w-full items-center justify-center space-x-1 rounded-lg bg-gradient-to-br from-[#ff0695]/90 to-[#ff0695] p-1 px-3 text-center text-xs/4 break-words text-white shadow-[inset_0px_0px_8px_rgba(255,255,255,0.2)] transition-all duration-300 ease-out hover:scale-105 hover:from-[#ff0695] hover:to-[#ff0695]/90 hover:shadow-[inset_0px_0px_12px_rgba(255,255,255,0.3)] active:scale-100 lg:w-auto"
-              href="/events/event-lolalolita.ics"
-              download="Lola Lolita Land · 14 y 15 de Junio"
+              class="group inline-flex min-h-[42px] w-full items-center justify-center space-x-2 rounded-full bg-gradient-to-br from-[#3b0764] via-[#312e81] to-[#1e3a8a] px-5 py-2 text-sm font-semibold tracking-wide text-white shadow-lg transition-all duration-300 ease-in-out hover:scale-105 hover:from-[#4c1d95] hover:to-[#1e40af] active:scale-100 lg:w-auto"
+              href="/events/event-Creer-y-Crear-12-de-Julio.ics"
+              download="Creer y Crear · 12 de Julio"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -153,72 +152,21 @@ import CalendarImage from "@/assets/images/calendario.webp"
         <div class="relative h-80 w-full overflow-hidden">
           <Image
             class="relative h-full w-full [mask-image:linear-gradient(to_bottom,black_80%,transparent_100%)] object-cover object-center"
-            src="/images/aquopolis.webp"
-            alt="Imagen de los toboganes en Aquopolis"
+            src={esnecario}
+            alt="Creer y Crear en multicentro ibague"
             width={1000}
             height={513}
           />
         </div>
         <div class="p-4 pt-4 sm:p-6 md:p-8 lg:p-10">
-          <h3 class="text-primary text-center text-sm/4 font-semibold lg:text-left">
-            La experiencia más refrescante
-          </h3>
+          <h3 class="text-center text-2xl font-semibold lg:text-left">El mejor parche de Ibagué</h3>
           <p
             class="mx-auto mt-2 max-w-[50ch] text-center text-xs/5 text-balance text-gray-600 sm:text-sm/6 lg:mx-0 lg:text-left"
           >
-            Este año Lola Lolita Land se celebra en Aquopolis, Madrid, un parque acuático lleno de
-            toboganes y piscinas.
+            Sumérgete en un mundo de creatividad y apoyo con Creer y Crear, donde la magia de la
+            imaginación cobra vida. Disfruta de actividades emocionantes, espectáculos cautivadores
+            y momentos inolvidables en Multicentro.
           </p>
-          <div class="mt-4 flex flex-col items-stretch gap-2 lg:flex-row lg:items-center lg:gap-4">
-            <a
-              class="group inline-flex min-h-[38px] w-full items-center justify-center space-x-1 rounded-lg bg-gradient-to-br from-[#ff0695]/90 to-[#ff0695] p-1 px-3 text-center text-xs/4 break-words text-white shadow-[inset_0px_0px_8px_rgba(255,255,255,0.2)] transition-all duration-300 ease-out hover:scale-105 hover:from-[#ff0695] hover:to-[#ff0695]/90 hover:shadow-[inset_0px_0px_12px_rgba(255,255,255,0.3)] active:scale-100 lg:flex-1"
-              href="https://villanueva.aquopolis.es/condiciones-de-contratacion"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <svg
-                class="text-white transition-all"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
-                <path d="M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2z"></path>
-                <path d="M9 9h1"></path>
-                <path d="M9 13h6"></path>
-                <path d="M9 17h6"></path>
-              </svg>
-              <span>Condiciones de contratación</span>
-            </a>
-            <a
-              class="group inline-flex min-h-[38px] w-full items-center justify-center space-x-1 rounded-lg bg-gradient-to-br from-[#ff0695]/90 to-[#ff0695] p-1 px-3 text-center text-xs/4 break-words text-white shadow-[inset_0px_0px_8px_rgba(255,255,255,0.2)] transition-all duration-300 ease-out hover:scale-105 hover:from-[#ff0695] hover:to-[#ff0695]/90 hover:shadow-[inset_0px_0px_12px_rgba(255,255,255,0.3)] active:scale-100 lg:flex-1"
-              href="https://villanueva.aquopolis.es/normas-de-funcionamiento"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <svg
-                class="text-white transition-all"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <circle cx="12" cy="12" r="10"></circle>
-                <path d="M12 16v-4"></path>
-                <path d="M12 8h.01"></path>
-              </svg>
-              <span>Normas de funcionamiento</span>
-            </a>
-          </div>
         </div>
       </div>
       <div
@@ -226,7 +174,7 @@ import CalendarImage from "@/assets/images/calendario.webp"
       >
       </div>
     </div>
-  </div> -->
+  </div>
 </div>
 
 <script>
