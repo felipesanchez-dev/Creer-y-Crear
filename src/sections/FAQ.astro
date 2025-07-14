@@ -180,6 +180,12 @@
         </div>
       </div>
     </div>
+    <div class="absolute bottom-8 left-1/2 z-20 -translate-x-1/2 transform">
+      <div class="scroll-indicator">
+        <div class="scroll-arrow"></div>
+        <p class="mt-2 text-xs text-white/60">Sigue explorando</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -190,7 +196,30 @@
     background-color: #111827;
     font-family: "Poppins", sans-serif;
   }
-
+  .scroll-indicator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    will-change: transform;
+    animation: bounce 2s infinite;
+  }
+  .scroll-arrow {
+    width: 2px;
+    height: 30px;
+    background: linear-gradient(to bottom, transparent, white);
+    position: relative;
+  }
+  .scroll-arrow::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: -3px;
+    width: 8px;
+    height: 8px;
+    border-right: 2px solid white;
+    border-bottom: 2px solid white;
+    transform: rotate(45deg);
+  }
   .magic-text {
     background: linear-gradient(to right, #a855f7, #60a5fa, #a855f7);
     background-size: 200%;

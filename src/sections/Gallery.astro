@@ -3,40 +3,33 @@ import { galleryImages } from "@/consts/galleryImages"
 
 import { Image } from "astro:assets"
 import BubbleBackground from "@/components/BubbleBackground.astro"
-import WaveSeparator from "@/components/WaveSeparator.astro"
 ---
 
-<WaveSeparator bottomColor="var(--color-primary)" hasBubbles />
-
-<section class="bg-theme-blue relative py-16 md:px-6 lg:px-8">
-  <BubbleBackground />
-  <div class="mx-auto max-w-6xl" id="gallery">
+<BubbleBackground />
+<section
+  class="relative overflow-hidden py-24 sm:py-32"
+  style="background: linear-gradient(to right, #5B4A9C, #7C5FAC); font-family: 'Poppins', sans-serif;"
+>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" id="gallery">
     <div class="relative mb-12 flex items-center justify-center">
       <h2
-        class="title mb-2 block p-4 text-center text-[1.65rem] font-bold text-white sm:text-sm lg:text-4xl xl:text-5xl"
+        class="text-center text-5xl font-extrabold tracking-wider text-white uppercase drop-shadow-lg sm:text-6xl md:text-7xl"
       >
-        ¡Así fue el año pasado!
-      </h2>
-      <h2
-        class="title2 mb-2 block p-4 text-center text-[1.65rem] font-bold text-white sm:text-sm lg:text-4xl xl:text-5xl"
-      >
-        ¡Así fue el año pasado!
+        📸 Recuerdos de <span class="text-[#FBBF24]">Creer y Crear 2025</span>
       </h2>
     </div>
-    <h3
-      class="block pb-20 text-center text-lg font-bold text-white opacity-80 max-md:px-6 max-md:pb-5"
-    >
-      Aquí tienes algunos recuerdos de la primera edición de Lola Lolita Land
-    </h3>
+    <p class="mb-16 text-center text-lg font-medium text-white/80 max-md:px-6 sm:text-xl">
+      Vive de nuevo la energía, la inspiración y la magia
+    </p>
 
     <ul
       id="slider-mobile"
-      class="flex snap-x snap-mandatory overflow-x-auto p-10 md:hidden [&>*:nth-child(even)]:rotate-2 [&>*:nth-child(odd)]:rotate-[-2deg]"
+      class="flex snap-x snap-mandatory gap-6 overflow-x-auto p-6 md:hidden [&>*:nth-child(even)]:rotate-2 [&>*:nth-child(odd)]:rotate-[-2deg]"
     >
       {
         galleryImages.map(({ image, alt, thumb }, index) => (
           <li
-            class="-m-1 aspect-9/10 w-72 shrink-0 cursor-pointer snap-center rounded-md shadow-sm transition-transform duration-300 will-change-transform"
+            class="group aspect-9/10 w-72 shrink-0 cursor-pointer snap-center rounded-2xl shadow-xl transition-transform duration-300 hover:scale-105"
             id={thumb + "slider"}
             data-index={index}
           >
@@ -46,7 +39,7 @@ import WaveSeparator from "@/components/WaveSeparator.astro"
               width={950}
               height={900}
               data-thumbID={thumb + "slider"}
-              class="border-theme-blue-light h-full w-full rounded-md border border-dashed object-cover"
+              class="h-full w-full rounded-2xl border-4 border-white/80 object-cover"
               loading="lazy"
             />
           </li>
@@ -55,13 +48,13 @@ import WaveSeparator from "@/components/WaveSeparator.astro"
     </ul>
 
     <ul
-      class="hidden grid-cols-1 gap-8 sm:grid-cols-2 md:grid md:grid-cols-3 lg:grid-cols-4 [&>*:nth-child(even)]:rotate-2 [&>*:nth-child(n)]:hover:scale-105 [&>*:nth-child(n)]:hover:rotate-0 [&>*:nth-child(n)]:hover:shadow-xl [&>*:nth-child(odd)]:rotate-[-2deg]"
+      class="hidden grid-cols-1 gap-10 sm:grid-cols-2 md:grid md:grid-cols-3 lg:grid-cols-4 [&>*:nth-child(even)]:rotate-2 [&>*:nth-child(n)]:hover:scale-105 [&>*:nth-child(n)]:hover:rotate-0 [&>*:nth-child(n)]:hover:shadow-2xl [&>*:nth-child(odd)]:rotate-[-2deg]"
     >
       {
         galleryImages.map(({ image, alt, thumb }, index) => (
           <li
             id={thumb}
-            class="aspect-9/10 cursor-pointer rounded-md shadow-sm transition-transform duration-300 will-change-transform"
+            class="group aspect-9/10 cursor-pointer rounded-2xl shadow-xl transition-transform duration-300 will-change-transform"
             data-index={index}
           >
             <Image
@@ -70,7 +63,7 @@ import WaveSeparator from "@/components/WaveSeparator.astro"
               width={950}
               height={900}
               data-thumbID={thumb}
-              class="border-theme-blue-light h-full w-full rounded-md border border-dashed object-cover"
+              class="h-full w-full rounded-2xl border-4 border-white/80 object-cover"
               loading="lazy"
             />
           </li>
@@ -78,54 +71,45 @@ import WaveSeparator from "@/components/WaveSeparator.astro"
       }
     </ul>
   </div>
+
   <div
-    class="pointer-events-none fixed inset-0 flex cursor-pointer items-center justify-center p-4 opacity-0 transition-opacity duration-300 ease-in-out"
+    class="pointer-events-none fixed inset-0 z-50 flex cursor-pointer items-center justify-center bg-black/80 p-4 opacity-0 backdrop-blur-sm transition-opacity duration-300 ease-in-out"
     role="dialog"
     aria-modal="true"
     aria-labelledby="lightbox-title"
     id="lightbox"
   >
-    <h2 id="lightbox-title" class="sr-only">Galería de imágenes de Lola Lolita Land</h2>
+    <h2 id="lightbox-title" class="sr-only">Galería de imágenes de Creer y Crear</h2>
     <div class="relative w-full max-w-5xl p-4">
       <button
         type="button"
         id="close-lightbox"
-        class="hover:text-primary absolute top-1 -right-16 z-[999999] cursor-pointer rounded-full bg-white p-2.5 text-gray-700 transition-all duration-300 ease-in will-change-transform hover:scale-125 sm:top-6 sm:right-6 md:top-8 md:right-8"
+        class="absolute -top-2 -right-2 z-[999999] cursor-pointer rounded-full bg-white p-2.5 text-gray-800 transition-all duration-300 ease-in hover:scale-110 hover:bg-[#a78bfa] hover:text-white sm:top-0 sm:right-0"
       >
         <span class="sr-only">Cerrar Galería</span>
-        <svg
-          class="size-6"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="1.5"
-          stroke="currentColor"
-          aria-hidden="true"
-          data-slot="icon"
-        >
+        <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"></path>
         </svg>
       </button>
 
       <button
         id="prev-image"
-        class="hover:text-primary absolute -bottom-16 left-8 z-50 flex h-12 w-12 transform cursor-pointer items-center justify-center rounded-full bg-white p-2.5 text-2xl text-gray-700 transition-all duration-300 ease-in-out hover:scale-125 md:top-1/2 md:-translate-y-1/2 lg:-left-16"
+        class="absolute -bottom-20 left-1/2 z-50 flex h-12 w-12 -translate-x-16 transform items-center justify-center rounded-full bg-white/90 p-2.5 text-2xl text-gray-800 transition duration-300 ease-in-out hover:scale-110 hover:bg-[#a78bfa] hover:text-white md:top-1/2 md:-left-4 md:-translate-y-1/2 lg:-left-16"
       >
         &#60;
       </button>
 
       <button
         id="next-image"
-        class="hover:text-primary absolute right-8 -bottom-16 z-50 flex h-12 w-12 transform cursor-pointer items-center justify-center rounded-full bg-white p-2.5 text-2xl text-gray-700 transition-all duration-300 ease-in-out hover:scale-125 md:top-1/2 md:-translate-y-1/2 lg:-right-16"
+        class="absolute right-1/2 -bottom-20 z-50 flex h-12 w-12 translate-x-16 transform items-center justify-center rounded-full bg-white/90 p-2.5 text-2xl text-gray-800 transition duration-300 ease-in-out hover:scale-110 hover:bg-[#a78bfa] hover:text-white md:top-1/2 md:-right-4 md:-translate-y-1/2 lg:-right-16"
       >
         &#62;
       </button>
 
-      <figure id="light-box-content"></figure>
+      <figure id="light-box-content" class="h-full w-full"></figure>
     </div>
   </div>
 </section>
-
-<WaveSeparator bottomColor="var(--color-primary)" />
 
 <script>
   const galleryItems = Array.from(
@@ -150,7 +134,6 @@ import WaveSeparator from "@/components/WaveSeparator.astro"
       const galleryParent = document.getElementById(`${galleryParentID}`) as HTMLLIElement
       galleryParent.appendChild(previousImage)
     }
-    // Evitamos el error de dupliacado de viewTransitionName
     galleryItems.forEach((img) => (img.style.viewTransitionName = "none"))
     image.style.viewTransitionName = "selected-img"
 
@@ -181,7 +164,7 @@ import WaveSeparator from "@/components/WaveSeparator.astro"
 
     const galleryParent = document.getElementById(`${galleryParentID}`) as HTMLLIElement
     galleryParent.appendChild(image)
-    document.body.style.overflow = "" // Restaurar scroll
+    document.body.style.overflow = ""
   }
 
   const navigateLightBox = (direction: number) => {
@@ -300,16 +283,37 @@ import WaveSeparator from "@/components/WaveSeparator.astro"
 </script>
 
 <style>
-  .title {
-    position: absolute;
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap");
+
+  section {
+    font-family: "Poppins", sans-serif;
+  }
+
+  .title-container {
+    position: relative;
     color: transparent;
-    -webkit-text-stroke: 2px white;
   }
-  .title2 {
+
+  .title-outline {
     position: absolute;
-    color: #ff0695;
-    animation: water 3s ease-in-out infinite;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-text-stroke: 2px #a78bfa;
+    color: transparent;
+    white-space: nowrap;
   }
+
+  .title-fill {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #f0abfc;
+    animation: water 3s ease-in-out infinite;
+    white-space: nowrap;
+  }
+
   @keyframes water {
     0%,
     100% {
@@ -348,5 +352,12 @@ import WaveSeparator from "@/components/WaveSeparator.astro"
 
   #slider-mobile::-webkit-scrollbar {
     display: none;
+  }
+
+  #light-box-content > img {
+    max-height: 85vh;
+    object-fit: contain;
+    width: 100%;
+    border-radius: 1rem;
   }
 </style>
