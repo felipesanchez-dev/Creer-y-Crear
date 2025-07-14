@@ -1,11 +1,11 @@
 ---
 const bubbles = Array.from({ length: 30 }, (_, i) => ({
   id: i + 1,
-  size: `${Math.random() * 30 + 10}px`,
+  size: `${Math.random() * 30 + 15}px`,
   left: `${Math.random() * 95}%`,
   top: `${Math.random() * 95}%`,
-  delay: `${Math.random() * 3}s`, // Minimal delay for faster start
-  duration: `${Math.random() * 3 + 2}s`, // Super fast animations (2-5s)
+  delay: `${Math.random() * 3}s`,
+  duration: `${Math.random() * 4 + 2}s`,
 }))
 
 const instanceId = Math.random().toString(36).substring(2, 9)
@@ -13,19 +13,30 @@ const instanceId = Math.random().toString(36).substring(2, 9)
 
 <style>
   .bubble {
-    @apply absolute rounded-full bg-radial-[at_50%_75%] from-[transparent] via-[#bedbff6f] to-[transparent] to-90%;
-    bottom: -10px; /* Start slightly below the container */
+    @apply absolute rounded-full;
+    background: radial-gradient(circle at 50% 60%, #a78bfa99, #6d28d9aa 60%, transparent 90%);
+    border: 1px solid #7c3aed66;
+    box-shadow:
+      0 0 10px rgba(124, 58, 237, 0.4),
+      0 0 20px rgba(147, 51, 234, 0.2);
+    bottom: -10px;
+    opacity: 0;
     will-change: transform, opacity;
-    opacity: 0; /* Start transparent */
-    border: 1px solid #e4e4e4;
-    box-shadow: 0 0 8px rgba(255, 255, 255, 0.3); /* Enhanced glow */
     contain: strict;
   }
 
+  .bubble::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent 70%);
+  }
+
   .tickets-button {
-    background-size: 200% 100%;
     position: relative;
     overflow: hidden;
+    background-size: 200% 100%;
   }
 
   .tickets-button::before {
@@ -35,23 +46,26 @@ const instanceId = Math.random().toString(36).substring(2, 9)
     left: -50%;
     width: 200%;
     height: 200%;
-    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.3), transparent);
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.2), transparent);
     transform: rotate(30deg);
-    animation: shine 3s linear infinite;
-  }
-
-  @keyframes shimmer {
-    100% {
-      background-position: 200% 0;
-    }
+    animation: shine 4s linear infinite;
   }
 
   @keyframes shine {
     0% {
-      transform: translateX(-100%) rotate(30deg);
+      transform: translateX(-100%) rotate(25deg);
     }
     100% {
-      transform: translateX(100%) rotate(50deg);
+      transform: translateX(100%) rotate(45deg);
+    }
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: 0% 0%;
+    }
+    100% {
+      background-position: 200% 0%;
     }
   }
 
@@ -59,29 +73,21 @@ const instanceId = Math.random().toString(36).substring(2, 9)
     0% {
       transform: translateY(0);
       opacity: 0;
-      background-position: 0% 0;
     }
-
-    3% {
-      /* Even faster fade in */
-      transform: translateY(-10%);
-    }
-
-    30% {
-      /* Faster midpoint */
-      transform: translateY(-100%);
+    10% {
       opacity: 0.7;
     }
-
+    30% {
+      transform: translateY(-100%);
+      opacity: 1;
+    }
     70% {
       transform: translateY(-200%);
-      opacity: 0.5;
+      opacity: 0.6;
     }
-
     100% {
-      transform: translateY(-300%); /* Much longer travel distance */
+      transform: translateY(-300%);
       opacity: 0;
-      background-position: 200% 0;
     }
   }
 </style>
@@ -91,14 +97,10 @@ const instanceId = Math.random().toString(36).substring(2, 9)
     bubbles.map(({ size, left, duration, delay }) => (
       <div
         class="bubble tickets-button"
-        style={`
-        width: ${size};
-        height: ${size};
-        left: ${left};
-        animation:
+        style={`width: ${size}; height: ${size}; left: ${left}; animation:
           bubbles ${duration} linear infinite ${delay},
-          shimmer 3s linear infinite;
-      `}
+          shimmer 6s ease-in-out infinite;
+        `}
       />
     ))
   }
