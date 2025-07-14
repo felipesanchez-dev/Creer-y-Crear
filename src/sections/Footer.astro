@@ -1,130 +1,223 @@
 ---
-import Sponsor from "@/components/Sponsor.astro"
-import Instagram from "../../public/icons/instagram.svg"
-import TikTok from "../../public/icons/tiktok.svg"
-import InfoJobs from "../assets/infojobs.svg"
+// Configuración de redes sociales
+const socialLinks = {
+  tiktok: "https://tiktok.com/@juanseblack",
+  instagram: "https://instagram.com/juanseblack",
+  youtube: "https://youtube.com/@juanseblack",
+}
 ---
 
-<footer
-  class="footer footer-horizontal footer-center text-primary-content flex flex-col items-center justify-center p-10 text-center"
->
-  <aside class="flex flex-col items-center">
-    <div
-      class="logo lazy_background_image_maskImage lazy_background_image relative size-28 lg:size-32"
-    >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="4.71132 2 10.58 15"
-        role="img"
-        aria-labelledby="logoTitle"
-      >
-        <title id="logoTitle">Lola Lolita Land</title>
-        <path
-          d="M 5 2 L 15 2 C 16 3 14 4 15 5 C 16 6 14 7 15 8 C 16 9 14 10 15 11 C 16 12 14 13 15 14 C 16 15 14 16 15 17 L 5 17 C 4 16 6 15 5 14 C 4 13 6 12 5 11 C 4 10 6 9 5 8 C 4 7 6 6 5 5 C 4 4 6 3 5 2"
-          fill="#383acf"></path>
-      </svg>
-    </div>
-
-    <nav class="mt-6">
-      <div class="grid grid-flow-col gap-4">
-        <a
-          class="transition hover:scale-110"
-          href="https://www.instagram.com/lolalolita/"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Visitar perfil de Instagram de Lola Lolita"
-        >
-          <span class="sr-only">Instagram de Lola Lolita</span>
-          <Instagram name="instagram" class="size-6 fill-white md:size-8" aria-hidden="true" />
-        </a>
-        <a
-          class="transition hover:scale-110"
-          href="https://www.tiktok.com/@lolalolita"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Visitar perfil de TikTok de Lola Lolita"
-        >
-          <span class="sr-only">TikTok de Lola Lolita</span>
-          <TikTok name="tiktok" class="size-6 fill-white md:size-8" aria-hidden="true" />
-        </a>
+<footer class="footer-container">
+  <div class="mx-auto max-w-7xl px-6 py-10 lg:px-8">
+    <div class="mb-9 text-center">
+      <h2 class="brand-title">Creer y Crear</h2>
+      <div class="creator-signature">
+        <span class="creator-text">× JuanseBlack</span>
       </div>
-    </nav>
-
-    <div class="mt-8 flex flex-wrap justify-center gap-4">
-      <a
-        class="text-xs text-white/80 transition hover:text-white hover:underline"
-        href="https://villanueva.aquopolis.es/condiciones-de-contratacion"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Condiciones de contratación
-      </a>
-      <a
-        class="text-xs text-white/80 transition hover:text-white hover:underline"
-        href="https://villanueva.aquopolis.es/normas-de-funcionamiento"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Normas de funcionamiento
-      </a>
+      <p class="mission-text">
+        Transformando vidas a través de historias auténticas y crecimiento personal
+      </p>
     </div>
-
-    <div
-      class="mt-8 mb-8 flex items-center justify-center gap-2 rounded bg-white px-4 text-xs text-black"
-    >
-      Web patrocinada por:
-      <Sponsor href="https://www.infojobs.net/" isOfficial>
-        <InfoJobs
-          title="InfoJobs"
-          width="90"
-          height="27"
-          class="inline-block transition-transform group-hover:scale-110"
-        />
-      </Sponsor>
-    </div>
-
-    <p class="90 mt-2 text-xs text-pretty text-white">
-      Copyright © {new Date().getFullYear()} - Todos los derechos reservados
-    </p>
-  </aside>
+  </div>
 </footer>
 
 <style>
-  .logo {
-    -webkit-mask-image: url("/favicon.svg");
-    mask-image: url("/favicon.svg");
-    -webkit-mask-size: cover;
-    mask-size: cover;
-    background-color: rgb(243, 243, 243);
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap");
+
+  .footer-container {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    font-family: "Poppins", sans-serif;
+    color: white;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
     position: relative;
     overflow: hidden;
   }
-  .lazy_background_image_maskImage {
-    -webkit-mask-size: cover;
-    mask-size: cover;
-    -webkit-mask-image: url("/favicon.svg");
-    mask-image: url("/favicon.svg");
-  }
-  .lazy_background_image {
-    transition: 1s cubic-bezier(0.6, 0.6, 0, 1) opacity;
-  }
-  .logo svg {
-    width: 200px;
-    height: 300px;
+
+  .footer-container::before {
+    content: "";
     position: absolute;
-    top: 10px;
+    top: 0;
     left: 0;
-    animation: 8s linear infinite;
-    transform: translate(-300px, -70px) rotate(20deg);
-    animation-name: logo_animation !important;
+    right: 0;
+    bottom: 0;
+    background:
+      radial-gradient(circle at 20% 80%, rgba(37, 3, 99, 0.262) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(49, 2, 85, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 40% 40%, rgba(2, 50, 60, 0.1) 0%, transparent 50%);
+    pointer-events: none;
   }
 
-  @keyframes logo_animation {
-    0% {
-      transform: translate(-300px, -70px) rotate(20deg);
-    }
+  /* Título Principal */
+  .brand-title {
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    background: linear-gradient(
+      135deg,
+      #ffffff 0%,
+      #ffffff 25%,
+      #ffffff 50%,
+      #fafafa 75%,
+      #011e40 100%
+    );
+    background-size: 400% 400%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientShift 4s ease-in-out infinite;
+    text-align: center;
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  @keyframes gradientShift {
+    0%,
     100% {
-      transform: translate(600px, -70px) rotate(20deg);
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  /* Firma del Creador */
+  .creator-signature {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 2rem;
+  }
+
+  .creator-text {
+    font-size: clamp(1.2rem, 3vw, 2rem);
+    font-weight: 600;
+    color: #feca57;
+    text-shadow: 0 0 20px rgba(254, 202, 87, 0.5);
+    position: relative;
+    z-index: 2;
+  }
+
+  .creator-signature::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120%;
+    height: 60px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(254, 202, 87, 0.2) 20%,
+      rgba(254, 202, 87, 0.3) 50%,
+      rgba(254, 202, 87, 0.2) 80%,
+      transparent 100%
+    );
+    border-radius: 30px;
+    filter: blur(15px);
+    z-index: 1;
+  }
+
+  /* Texto de Misión */
+  .mission-text {
+    font-size: 1.1rem;
+    color: #cbd5e1;
+    font-weight: 400;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+    opacity: 0.9;
+  }
+
+  /* Iconos de Redes Sociales */
+  .social-link {
+    display: inline-block;
+    transition:
+      transform 0.3s ease,
+      filter 0.3s ease;
+  }
+
+  .social-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.1) 0%,
+      rgba(255, 255, 255, 0.05) 100%
+    );
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #e2e8f0;
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .social-icon::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.2) 50%,
+      transparent 100%
+    );
+    transition: left 0.5s ease;
+  }
+
+  .social-link:hover {
+    transform: translateY(-5px) scale(1.1);
+    filter: drop-shadow(0 10px 20px rgba(255, 107, 107, 0.3));
+  }
+
+  .social-link:hover .social-icon {
+    background: linear-gradient(
+      135deg,
+      rgba(255, 107, 107, 0.2) 0%,
+      rgba(254, 202, 87, 0.2) 50%,
+      rgba(72, 219, 251, 0.2) 100%
+    );
+    border-color: rgba(255, 107, 107, 0.4);
+    color: #ffffff;
+  }
+
+  .social-link:hover .social-icon::before {
+    left: 100%;
+  }
+
+  /* Hover específico para cada red social */
+  .social-link:nth-child(1):hover .social-icon {
+    background: linear-gradient(135deg, rgba(255, 0, 80, 0.2), rgba(255, 0, 80, 0.1));
+    border-color: rgba(255, 0, 80, 0.4);
+  }
+
+  .social-link:nth-child(2):hover .social-icon {
+    background: linear-gradient(135deg, rgba(225, 48, 108, 0.2), rgba(225, 48, 108, 0.1));
+    border-color: rgba(225, 48, 108, 0.4);
+  }
+
+  .social-link:nth-child(3):hover .social-icon {
+    background: linear-gradient(135deg, rgba(255, 0, 0, 0.2), rgba(255, 0, 0, 0.1));
+    border-color: rgba(255, 0, 0, 0.4);
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .social-icon {
+      width: 50px;
+      height: 50px;
+    }
+
+    .mission-text {
+      font-size: 1rem;
+      padding: 0 1rem;
     }
   }
 </style>
