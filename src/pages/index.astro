@@ -8,6 +8,7 @@ import Gallery from "@/sections/Gallery.astro"
 import FAQ from "@/sections/FAQ.astro"
 import Footer from "@/sections/Footer.astro"
 import Info from "@/sections/Info.astro"
+import Testimonials from "@/sections/Testimonials.astro"
 
 export const prerender = true
 ---
@@ -17,7 +18,8 @@ export const prerender = true
   <Tickets eventoActivo={false} />
   <Info />
   <Map />
-  <FAQ />
   <Gallery />
+  <Testimonials />
+  <FAQ />
   <Footer />
 </Layout>

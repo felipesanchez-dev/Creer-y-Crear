@@ -1,0 +1,217 @@
+---
+import BubbleBackground from "@/components/BubbleBackground.astro"
+import Comentario1 from "../assets/comentario-1.png"
+
+const testimonials = [
+  {
+    name: "Yoana Peña",
+    text: "Gracias por la experiencia tan bonita, y por no sacarme llorando jajajaja😂. Ánimo Es el comienzo de grandes sueños❤️☺️",
+    avatar: Comentario1.src,
+    social: "Tiktok",
+  },
+  {
+    name: "Carlos Rivas",
+    text: "¡El resultado final superó mis expectativas! Un equipo muy profesional y atento a cada detalle.",
+    avatar: Comentario1.src,
+    social: "Instagram",
+  },
+  {
+    name: "Sofía Gómez",
+    text: "Me encantó el proceso, fue muy divertido y me sentí cómoda en todo momento. ¡Volveré!",
+    avatar: Comentario1.src,
+    social: "Website",
+  },
+  {
+    name: "Laura Torres",
+    text: "Profesionalismo y calidad de principio a fin. El carisma del equipo hace que todo sea más fácil.",
+    avatar: Comentario1.src,
+    social: "Instagram",
+  },
+  {
+    name: "Miguel Ángel",
+    text: "Una experiencia increíble. La comunicación fue fluida y el producto final es de altísima calidad. ¡Gracias!",
+    avatar: Comentario1.src,
+    social: "Tiktok",
+  },
+  {
+    name: "Andrea Roa",
+    text: "Superaron lo que imaginaba. Cada detalle fue cuidado con una precisión asombrosa. ¡100% recomendados!",
+    avatar: Comentario1.src,
+    social: "Facebook",
+  },
+]
+---
+
+<BubbleBackground />
+<br />
+<section id="testimonials" class="relative py-12 text-white">
+  <div class="mx-auto w-full max-w-7xl px-4 text-center sm:px-6 lg:px-8">
+    <h2 class="text-3xl font-extrabold tracking-tight sm:text-4xl">Testimonios que nos inspiran</h2>
+
+    {/* --- Contenedor Principal (oculta lo que se sale) --- */}
+    <div class="relative mt-12 overflow-hidden">
+      {/* --- Pista del Carrusel (se mueve con transform) --- */}
+      <div class="carrusel-track flex">
+        {
+          testimonials.map((t) => (
+            <div class="carrusel-card w-full flex-shrink-0 px-2 lg:w-1/3">
+              <div class="flex h-full flex-col rounded-2xl bg-white/95 p-6 text-gray-800 shadow-xl backdrop-blur-sm">
+                <blockquote class="flex-grow text-center italic">"{t.text}"</blockquote>
+                <div class="mt-6 flex items-center gap-4">
+                  <img
+                    src={t.avatar}
+                    alt={t.name}
+                    class="h-12 w-12 flex-shrink-0 rounded-full border-2 border-white object-cover shadow-md"
+                  />
+                  <div class="text-left">
+                    <div class="font-bold">{t.name}</div>
+                    <div class="text-sm text-purple-600">Comentario de {t.social}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    {/* --- Controles: Flechas --- */}
+    <div class="mt-8 flex items-center justify-center gap-6">
+      <button
+        aria-label="Anterior testimonio"
+        class="carrusel-arrow left flex h-11 w-11 cursor-pointer items-center justify-center rounded-full bg-white text-purple-600 shadow-lg transition hover:scale-110 active:scale-95"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="2.5"
+          stroke="currentColor"
+          class="h-6 w-6"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5"
+          ></path>
+        </svg>
+      </button>
+      <button
+        aria-label="Siguiente testimonio"
+        class="carrusel-arrow right flex h-11 w-11 cursor-pointer items-center justify-center rounded-full bg-white text-purple-600 shadow-lg transition hover:scale-110 active:scale-95"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="2.5"
+          stroke="currentColor"
+          class="h-6 w-6"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const section = document.querySelector("#testimonials")
+    if (!section) return
+
+    const track = section.querySelector(".carrusel-track") as HTMLElement
+    const originalCards = Array.from(section.querySelectorAll(".carrusel-card"))
+    const arrowLeft = section.querySelector(".carrusel-arrow.left")
+    const arrowRight = section.querySelector(".carrusel-arrow.right")
+
+    if (!track || !originalCards.length || !arrowLeft || !arrowRight) return
+
+    let itemsPerPage = 1
+    let cardWidth = 0
+    let totalCards = 0
+    let currentIndex = 0
+    let isTransitioning = false
+    let autoPlayInterval: ReturnType<typeof setInterval> | undefined
+
+    function setupCarousel() {
+      if (!track) return
+
+      // 1. Calcular cuántas tarjetas mostrar y clonar
+      itemsPerPage = window.innerWidth >= 1024 ? 3 : 1
+      const clonesCount = itemsPerPage
+
+      // 2. Crear los clones para el efecto infinito
+      const lastClones = originalCards.slice(-clonesCount).map((card) => card.cloneNode(true))
+      const firstClones = originalCards.slice(0, clonesCount).map((card) => card.cloneNode(true))
+
+      // 3. Limpiar y rellenar la pista con los clones
+      track.innerHTML = ""
+      track.append(...lastClones, ...originalCards, ...firstClones)
+
+      const allCards = Array.from(track.querySelectorAll(".carrusel-card"))
+      totalCards = allCards.length
+      cardWidth = (originalCards[0] as HTMLElement).offsetWidth
+
+      // 4. Posicionar el carrusel en el primer elemento real (después de los clones)
+      currentIndex = clonesCount
+      const initialOffset = currentIndex * cardWidth * -1
+      track.style.transition = "none" // Sin animación para el posicionamiento inicial
+      track.style.transform = `translateX(${initialOffset}px)`
+    }
+
+    function move(direction: number) {
+      if (isTransitioning) return
+      isTransitioning = true
+
+      // Aplicar transición para el deslizamiento suave
+      track.style.transition = "transform 0.5s ease-in-out"
+
+      currentIndex += direction
+      const offset = currentIndex * cardWidth * -1
+      track.style.transform = `translateX(${offset}px)`
+
+      stopAutoPlay()
+    }
+
+    // El "truco" para el bucle infinito
+    track.addEventListener("transitionend", () => {
+      isTransitioning = false
+      const clonesCount = itemsPerPage
+
+      // Si llegamos a los clones del final, saltamos al principio sin animación
+      if (currentIndex >= originalCards.length + clonesCount) {
+        currentIndex = clonesCount
+        track.style.transition = "none"
+        const offset = currentIndex * cardWidth * -1
+        track.style.transform = `translateX(${offset}px)`
+      }
+
+      // Si llegamos a los clones del principio, saltamos al final sin animación
+      if (currentIndex < clonesCount) {
+        currentIndex = originalCards.length + clonesCount - 1
+        track.style.transition = "none"
+        const offset = currentIndex * cardWidth * -1
+        track.style.transform = `translateX(${offset}px)`
+      }
+
+      startAutoPlay()
+    })
+
+    function startAutoPlay() {
+      stopAutoPlay()
+      autoPlayInterval = setInterval(() => move(1), 5000)
+    }
+    function stopAutoPlay() {
+      clearInterval(autoPlayInterval)
+    }
+
+    arrowLeft.addEventListener("click", () => move(-1))
+    arrowRight.addEventListener("click", () => move(1))
+
+    function initialize() {
+      setupCarousel()
+      startAutoPlay()
+    }
+
+    window.addEventListener("resize", initialize)
+    initialize()
+  })
+</script>
