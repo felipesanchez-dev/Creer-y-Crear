@@ -1,39 +1,301 @@
 ---
-// Configuración de redes sociales
+import me from "../assets/me.webp"
+
+const navSections = [
+  { name: "Inicio", href: "/" },
+  { name: "Eventos", href: "/#eventos" },
+  { name: "Información", href: "/#info" },
+  { name: "Como llegar", href: "/#como-llegar" },
+]
 const socialLinks = {
   tiktok: "https://tiktok.com/@juanseblack",
-  instagram: "https://instagram.com/juanseblack",
+  instagram: "https://www.instagram.com/juanse_black",
   youtube: "https://youtube.com/@juanseblack",
+}
+
+const developerInfo = {
+  name: "Felipe Reyes Sánchez",
+  title: "Full Stack Developer",
+  email: "jfelipe9.121@gmail.com",
+  website: "https://felipesanchezdev.site",
+  location: "Ibagué, Tolima - Colombia",
+  technologies: ["Astro", "TypeScript", "Tailwind CSS", "React", "Node.js"],
 }
 ---
 
 <footer class="footer-container">
-  <div class="mx-auto max-w-7xl px-6 py-10 lg:px-8">
-    <div class="mb-9 text-center">
-      <h2 class="brand-title">Creer y Crear</h2>
-      <div class="creator-signature">
-        <span class="creator-text">× JuanseBlack</span>
+  <div class="footer-pattern"></div>
+
+  <div class="mx-auto max-w-7xl px-6 py-16 lg:px-8">
+    <div class="mb-12 grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4">
+      <div class="col-span-1 lg:col-span-2">
+        <div class="brand-section">
+          <h3 class="brand-title">Creer y Crear</h3>
+          <p class="brand-subtitle">× JuanseBlack</p>
+          <p class="brand-description">
+            Una iniciativa de transformación personal que busca inspirar y empoderar a las personas
+            a través de historias auténticas, crecimiento personal y construcción de una comunidad
+            de apoyo en Ibagué, Tolima.
+          </p>
+          <div class="mission-badges" style="cursor: pointer;">
+            <span class="badge">🌟 Inspiración</span>
+            <span class="badge">💡 Crecimiento</span>
+            <span class="badge">🤝 Comunidad</span>
+          </div>
+        </div>
       </div>
-      <p class="mission-text">
-        Transformando vidas a través de historias auténticas y crecimiento personal
-      </p>
+
+      <div class="nav-section">
+        <h4 class="section-title">Navegación</h4>
+        <ul class="nav-links">
+          {
+            navSections.map((section) => (
+              <li>
+                <a href={section.href} class="nav-link">
+                  {section.name}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div class="resources-section">
+        <h4 class="section-title">Recursos</h4>
+        <ul class="nav-links">
+          <li><a href="#gallery-section" class="nav-link">Galería</a></li>
+          <li><a href="#eventos" class="nav-link">Eventos</a></li>
+          <li><a href="#faq-recap" class="nav-link">Preguntas Frecuentes</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="social-section mb-12">
+      <h4 class="section-title mb-8 text-center">Síguenos en Redes Sociales</h4>
+      <div class="flex justify-center space-x-6">
+        <a
+          href={socialLinks.tiktok}
+          class="social-link"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="TikTok"
+        >
+          <div class="social-icon tiktok">
+            <svg
+              fill="#ffffff"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              role="img"
+              xmlns="http://www.w3.org/2000/svg"
+              stroke="#ffffff"
+              ><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g
+                id="SVGRepo_tracerCarrier"
+                stroke-linecap="round"
+                stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"
+                ><title>TikTok icon</title><path
+                  d="M12.53.02C13.84 0 15.14.01 16.44 0c.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"
+                ></path></g
+              ></svg
+            >
+          </div>
+        </a>
+        <a
+          href={socialLinks.instagram}
+          class="social-link"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Instagram"
+        >
+          <div class="social-icon instagram">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.584-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.584-.012-4.85-.07c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.069-1.645-.069-4.85s.011-3.584.069-4.85c.149-3.225 1.664-4.771 4.919-4.919C8.416 2.175 8.796 2.163 12 2.163m0-2.163C8.74 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.74 0 12s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.74 24 12 24s3.667-.014 4.947-.072c4.358-.2 6.78-2.618 6.98-6.98C23.986 15.667 24 15.26 24 12s-.014-3.667-.072-4.947c-.2-4.358-2.618-6.78-6.98-6.98C15.667.014 15.26 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88z"
+              ></path>
+            </svg>
+          </div>
+        </a>
+        <a
+          href={socialLinks.youtube}
+          class="social-link"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="YouTube"
+        >
+          <div class="social-icon youtube">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.823v-7l6 3.5-6 3.5z"
+              ></path>
+            </svg>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="credits-section">
+      <div class="border-t border-white/10 pt-8">
+        <div class="flex flex-col items-center justify-between lg:flex-row">
+          <div class="mb-6 text-center lg:mb-0 lg:text-left">
+            <p class="text-sm text-gray-400">
+              © 2025 <span class="font-semibold text-white">Creer y Crear</span>. Todos los
+              derechos reservados.
+            </p>
+            <p class="mt-1 text-xs text-gray-500">
+              Iniciativa de transformación personal • Ibagué, Tolima - Colombia
+            </p>
+          </div>
+
+          <div class="credits-toggle">
+            <button
+              id="credits-button"
+              class="credits-btn"
+              aria-label="Ver créditos del desarrollador"
+            >
+              <span class="credits-btn-text">Créditos del Desarrollador</span>
+              <svg
+                class="credits-icon"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <polyline points="6,9 12,15 18,9"></polyline>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div id="credits-panel" class="credits-panel">
+          <div class="credits-content">
+            <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+              <div class="developer-info">
+                <div class="developer-card">
+                  <div class="developer-avatar">
+                    <div class="avatar-gradient">
+                      <img
+                        src={me.src}
+                        alt="Felipe Reyes Sanchez"
+                        class="avatar-image"
+                        style="border-radius: 100%; width: 80px; height: 80px; full-width: 100%; full-height: 100%; object-fit: cover;"
+                      />
+                    </div>
+                  </div>
+                  <h5 class="developer-name">{developerInfo.name}</h5>
+                  <p class="developer-title">{developerInfo.title}</p>
+                  <p class="developer-location">📍 {developerInfo.location}</p>
+                </div>
+              </div>
+
+              <div class="contact-info">
+                <h6 class="info-title">Contacto</h6>
+                <div class="contact-links">
+                  <a href={`mailto:${developerInfo.email}`} class="contact-link">
+                    <span class="contact-icon">📧</span>
+                    {developerInfo.email}
+                  </a>
+                  <a
+                    href={developerInfo.website}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="contact-link"
+                  >
+                    <span class="contact-icon">🌐</span>
+                    Portfolio Website
+                  </a>
+                </div>
+              </div>
+
+              <div class="tech-info">
+                <h6 class="info-title">Tecnologías Utilizadas</h6>
+                <div class="tech-stack">
+                  {developerInfo.technologies.map((tech) => <span class="tech-badge">{tech}</span>)}
+                </div>
+              </div>
+            </div>
+
+            <div class="gratitude-message">
+              <p class="gratitude-text">
+                <strong>Desarrollado</strong> para apoyar la misión de <strong>Creer y Crear</strong
+                >
+                de transformar vidas y construir una comunidad más fuerte en Ibagué, Tolima.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </footer>
 
-<style>
-  @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap");
+<script>
+  // Funcionalidad del panel desplegable de créditos
+  document.addEventListener("DOMContentLoaded", () => {
+    const creditsButton = document.getElementById("credits-button")
+    const creditsPanel = document.getElementById("credits-panel")
+    const creditsIcon = creditsButton?.querySelector(".credits-icon") as HTMLElement
 
+    creditsButton?.addEventListener("click", () => {
+      const isExpanded = creditsPanel?.classList.contains("expanded")
+
+      if (isExpanded) {
+        creditsPanel?.classList.remove("expanded")
+        if (creditsIcon) creditsIcon.style.transform = "rotate(0deg)"
+        creditsButton?.setAttribute("aria-expanded", "false")
+      } else {
+        creditsPanel?.classList.add("expanded")
+        if (creditsIcon) creditsIcon.style.transform = "rotate(180deg)"
+        creditsButton?.setAttribute("aria-expanded", "true")
+      }
+    })
+
+    // Cerrar el panel al hacer clic fuera
+    document.addEventListener("click", (event) => {
+      const target = event.target as HTMLElement
+      if (!creditsButton?.contains(target) && !creditsPanel?.contains(target)) {
+        creditsPanel?.classList.remove("expanded")
+        if (creditsIcon) creditsIcon.style.transform = "rotate(0deg)"
+        creditsButton?.setAttribute("aria-expanded", "false")
+      }
+    })
+  })
+</script>
+
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+
+  /* Variables CSS */
+  :root {
+    --footer-bg-primary: #0f172a;
+    --footer-bg-secondary: #1e293b;
+    --footer-bg-tertiary: #334155;
+    --accent-coral: #ff6b6b;
+    --accent-yellow: #feca57;
+    --accent-blue: #48dbfb;
+    --text-primary: #ffffff;
+    --text-secondary: #cbd5e1;
+    --text-muted: #94a3b8;
+    --border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  /* Contenedor Principal */
   .footer-container {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    background: linear-gradient(
+      135deg,
+      var(--footer-bg-primary) 0%,
+      var(--footer-bg-secondary) 50%,
+      var(--footer-bg-tertiary) 100%
+    );
     font-family: "Poppins", sans-serif;
-    color: white;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
     position: relative;
     overflow: hidden;
   }
 
-  .footer-container::before {
+  /* Patrón de Fondo */
+  .footer-pattern::before {
     content: "";
     position: absolute;
     top: 0;
@@ -41,117 +303,157 @@ const socialLinks = {
     right: 0;
     bottom: 0;
     background:
-      radial-gradient(circle at 20% 80%, rgba(37, 3, 99, 0.262) 0%, transparent 50%),
-      radial-gradient(circle at 80% 20%, rgba(49, 2, 85, 0.1) 0%, transparent 50%),
-      radial-gradient(circle at 40% 40%, rgba(2, 50, 60, 0.1) 0%, transparent 50%);
+      radial-gradient(circle at 20% 80%, rgba(255, 107, 107, 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(254, 202, 87, 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 40% 40%, rgba(72, 219, 251, 0.05) 0%, transparent 50%);
     pointer-events: none;
   }
 
-  /* Título Principal */
+  /* Sección de Marca */
+  .brand-section {
+    max-width: 500px;
+  }
+
   .brand-title {
-    font-size: clamp(3rem, 8vw, 6rem);
+    font-size: clamp(2rem, 4vw, 3rem);
     font-weight: 900;
-    letter-spacing: -0.02em;
     background: linear-gradient(
       135deg,
-      #ffffff 0%,
-      #ffffff 25%,
-      #ffffff 50%,
-      #fafafa 75%,
-      #011e40 100%
+      var(--accent-coral),
+      var(--accent-yellow),
+      var(--accent-blue)
     );
-    background-size: 400% 400%;
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: gradientShift 4s ease-in-out infinite;
-    text-align: center;
-    margin-bottom: 1rem;
-    position: relative;
-    z-index: 2;
+    background-size: 200% 200%;
+    animation: gradientFlow 3s ease-in-out infinite;
+    margin-bottom: 0.5rem;
   }
 
-  @keyframes gradientShift {
-    0%,
-    100% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-  }
-
-  /* Firma del Creador */
-  .creator-signature {
-    position: relative;
-    display: inline-block;
-    margin-bottom: 2rem;
-  }
-
-  .creator-text {
-    font-size: clamp(1.2rem, 3vw, 2rem);
+  .brand-subtitle {
+    font-size: 1.25rem;
+    color: var(--accent-yellow);
     font-weight: 600;
-    color: #feca57;
-    text-shadow: 0 0 20px rgba(254, 202, 87, 0.5);
-    position: relative;
-    z-index: 2;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 10px rgba(254, 202, 87, 0.3);
   }
 
-  .creator-signature::before {
+  .brand-description {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+  }
+
+  .mission-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .badge {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+  }
+
+  .badge:hover {
+    background: rgba(255, 107, 107, 0.2);
+    border-color: var(--accent-coral);
+    transform: translateY(-2px);
+  }
+
+  /* Títulos de Sección */
+  .section-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    position: relative;
+  }
+
+  .section-title::after {
     content: "";
     position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent-coral), var(--accent-yellow));
+    border-radius: 2px;
+  }
+
+  /* Enlaces de Navegación */
+  .nav-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .nav-links li {
+    margin-bottom: 0.75rem;
+  }
+
+  .nav-link {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+  }
+
+  .nav-link::before {
+    content: "";
+    position: absolute;
+    left: -15px;
     top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 120%;
-    height: 60px;
-    background: linear-gradient(
-      90deg,
-      transparent 0%,
-      rgba(254, 202, 87, 0.2) 20%,
-      rgba(254, 202, 87, 0.3) 50%,
-      rgba(254, 202, 87, 0.2) 80%,
-      transparent 100%
-    );
-    border-radius: 30px;
-    filter: blur(15px);
-    z-index: 1;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 6px;
+    background: var(--accent-coral);
+    border-radius: 50%;
+    opacity: 0;
+    transition: all 0.3s ease;
   }
 
-  /* Texto de Misión */
-  .mission-text {
-    font-size: 1.1rem;
-    color: #cbd5e1;
-    font-weight: 400;
-    max-width: 600px;
-    margin: 0 auto;
-    line-height: 1.6;
-    opacity: 0.9;
+  .nav-link:hover {
+    color: var(--text-primary);
+    transform: translateX(10px);
   }
 
-  /* Iconos de Redes Sociales */
+  .nav-link:hover::before {
+    opacity: 1;
+  }
+
+  /* Redes Sociales */
+  .social-section {
+    text-align: center;
+  }
+
   .social-link {
     display: inline-block;
-    transition:
-      transform 0.3s ease,
-      filter 0.3s ease;
+    transition: transform 0.3s ease;
   }
 
   .social-icon {
-    width: 60px;
-    height: 60px;
-    background: linear-gradient(
-      135deg,
-      rgba(255, 255, 255, 0.1) 0%,
-      rgba(255, 255, 255, 0.05) 100%
-    );
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    width: 56px;
+    height: 56px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #e2e8f0;
+    color: var(--text-secondary);
     backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
   }
@@ -163,61 +465,229 @@ const socialLinks = {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(
-      90deg,
-      transparent 0%,
-      rgba(255, 255, 255, 0.2) 50%,
-      transparent 100%
-    );
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
     transition: left 0.5s ease;
   }
 
   .social-link:hover {
-    transform: translateY(-5px) scale(1.1);
-    filter: drop-shadow(0 10px 20px rgba(255, 107, 107, 0.3));
-  }
-
-  .social-link:hover .social-icon {
-    background: linear-gradient(
-      135deg,
-      rgba(255, 107, 107, 0.2) 0%,
-      rgba(254, 202, 87, 0.2) 50%,
-      rgba(72, 219, 251, 0.2) 100%
-    );
-    border-color: rgba(255, 107, 107, 0.4);
-    color: #ffffff;
+    transform: translateY(-8px) scale(1.1);
   }
 
   .social-link:hover .social-icon::before {
     left: 100%;
   }
 
-  /* Hover específico para cada red social */
-  .social-link:nth-child(1):hover .social-icon {
-    background: linear-gradient(135deg, rgba(255, 0, 80, 0.2), rgba(255, 0, 80, 0.1));
-    border-color: rgba(255, 0, 80, 0.4);
+  /* Colores específicos para cada red social */
+  .social-icon.tiktok:hover {
+    background: rgba(255, 0, 80, 0.15);
+    border-color: rgba(255, 0, 80, 0.3);
+    color: #ff0050;
+    box-shadow: 0 8px 32px rgba(255, 0, 80, 0.3);
   }
 
-  .social-link:nth-child(2):hover .social-icon {
-    background: linear-gradient(135deg, rgba(225, 48, 108, 0.2), rgba(225, 48, 108, 0.1));
-    border-color: rgba(225, 48, 108, 0.4);
+  .social-icon.instagram:hover {
+    background: linear-gradient(45deg, rgba(225, 48, 108, 0.15), rgba(255, 101, 132, 0.15));
+    border-color: rgba(225, 48, 108, 0.3);
+    color: #e1306c;
+    box-shadow: 0 8px 32px rgba(225, 48, 108, 0.3);
   }
 
-  .social-link:nth-child(3):hover .social-icon {
-    background: linear-gradient(135deg, rgba(255, 0, 0, 0.2), rgba(255, 0, 0, 0.1));
-    border-color: rgba(255, 0, 0, 0.4);
+  .social-icon.youtube:hover {
+    background: rgba(255, 0, 0, 0.15);
+    border-color: rgba(255, 0, 0, 0.3);
+    color: #ff0000;
+    box-shadow: 0 8px 32px rgba(255, 0, 0, 0.3);
+  }
+
+  .social-icon.twitter:hover {
+    background: rgba(29, 161, 242, 0.15);
+    border-color: rgba(29, 161, 242, 0.3);
+    color: #1da1f2;
+    box-shadow: 0 8px 32px rgba(29, 161, 242, 0.3);
+  }
+
+  /* Botón de Créditos */
+  .credits-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 0.75rem 1.25rem;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    backdrop-filter: blur(10px);
+  }
+
+  .credits-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--accent-coral);
+    color: var(--text-primary);
+    transform: translateY(-2px);
+  }
+
+  .credits-icon {
+    transition: transform 0.3s ease;
+  }
+
+  /* Panel de Créditos */
+  .credits-panel {
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.5s ease;
+    margin-top: 0;
+  }
+
+  .credits-panel.expanded {
+    max-height: 600px;
+    margin-top: 2rem;
+  }
+
+  .credits-content {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 2rem;
+    backdrop-filter: blur(20px);
+  }
+
+  /* Info del Desarrollador */
+  .developer-card {
+    text-align: center;
+  }
+
+  .developer-avatar {
+    margin: 0 auto 1rem;
+    width: 80px;
+    height: 80px;
+  }
+
+  .avatar-gradient {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--accent-coral), var(--accent-yellow));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+  }
+
+  .developer-name {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+  }
+
+  .developer-title {
+    color: var(--accent-yellow);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+
+  .developer-location {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+  }
+
+  /* Información de Contacto */
+  .info-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+  }
+
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+  }
+
+  .contact-link:hover {
+    color: var(--accent-coral);
+  }
+
+  .contact-icon {
+    font-size: 1rem;
+  }
+
+  /* Stack de Tecnologías */
+  .tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .tech-badge {
+    background: rgba(72, 219, 251, 0.1);
+    border: 1px solid rgba(72, 219, 251, 0.2);
+    border-radius: 8px;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+    color: var(--accent-blue);
+    font-weight: 500;
+  }
+
+  /* Mensaje de Agradecimiento */
+  .gratitude-message {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+  }
+
+  .gratitude-text {
+    color: var(--text-secondary);
+    font-style: italic;
+    line-height: 1.6;
+  }
+
+  /* Animaciones */
+  @keyframes gradientFlow {
+    0%,
+    100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
   }
 
   /* Responsive Design */
   @media (max-width: 768px) {
     .social-icon {
-      width: 50px;
-      height: 50px;
+      width: 48px;
+      height: 48px;
     }
 
-    .mission-text {
-      font-size: 1rem;
-      padding: 0 1rem;
+    .brand-title {
+      font-size: 2rem;
+    }
+
+    .credits-content {
+      padding: 1.5rem;
+    }
+
+    .tech-stack {
+      justify-content: center;
     }
   }
 </style>
