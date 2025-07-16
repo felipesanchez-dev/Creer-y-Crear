@@ -1,322 +1,96 @@
-<section id="faq-recap" class="relative overflow-hidden bg-[#6B6DD3] py-24 sm:py-32">
-  <div
-    class="absolute -top-48 left-1/2 -z-10 -translate-x-1/2 transform-gpu blur-3xl"
-    aria-hidden="true"
-  >
-    <div
-      class="aspect-[1108/632] w-[69.25rem] bg-gradient-to-r from-[#80caff] to-[#4f46e5] opacity-20"
-      style="clip-path: polygon(73.6% 51.7%, 91.7% 11.8%, 100% 46.4%, 97.4% 82.2%, 92.5% 84.9%, 75.7% 64.6%, 55.3% 47.5%, 46.5% 49.4%, 45% 62.9%, 50.3% 87.2%, 21.3% 64.1%, 0.1% 100%, 1.4% 98.2%, 8.2% 91.8%, 14.7% 74.2%, 27.6% 62.8%, 32.9% 83.1%, 52.4% 58.3%, 65.2% 31.7%, 60.8% 34.4%, 73.6% 51.7%)"
-    >
-    </div>
-  </div>
+---
+const faqs = [
+  {
+    question: "¿Qué es 'Creer y Crear'?",
+    answer:
+      "'Creer y Crear' es más que un evento; es un espacio seguro donde conectas con tu propósito, das voz a tus sueños y descubres tu verdadera pasión. Es un recordatorio de que la vida está llena de oportunidades y que mereces no dejarlas pasar. Aquí, te invitamos a creer en ti para poder crear la realidad que anhelas.",
+  },
+  {
+    question: "¿Cuál es el propósito del evento?",
+    answer:
+      "El propósito es enseñarte que 'el tren de las oportunidades pasa una vez, y no debes dejar que se te escape'. Buscamos inspirarte a tomar acción, a perseguir lo que te mueve y a construir un camino auténtico. Cada edición es una nueva oportunidad para crecer y conectar con personas que, como tú, están en busca de su mejor versión.",
+  },
+  {
+    question: "¿Qué experiencias puedo vivir si asisto?",
+    answer:
+      "Cada edición es única porque se adapta a la energía y los sueños de quienes participan. No hay actividades fijas, pero siempre encontrarás un ambiente de apoyo, charlas que te inspirarán, dinámicas para conocerte mejor y la oportunidad de conectar con una comunidad que te entiende y te impulsa. Es una experiencia de transformación personal.",
+  },
+  {
+    question: "¿Este proyecto tiene continuidad?",
+    answer:
+      "¡Sí! Gracias a la confianza de marcas, aliados y, lo más importante, de personas como tú, este proyecto sigue creciendo. Realizamos diferentes ediciones a lo largo del año, cada una con su propia magia. Te invitamos a seguirnos en redes sociales para que no te pierdas ninguna de las oportunidades que están por venir.",
+  },
+]
+---
 
-  <div class="mx-auto max-w-4xl px-6 lg:px-8">
-    <div class="mx-auto max-w-2xl text-center">
-      <h2 class="magic-text text-3xl font-bold tracking-tight text-white sm:text-4xl">
-        Creer y Crear
-      </h2>
-      <p class="mt-4 text-lg leading-8 text-gray-300">
-        ¿Te lo perdiste o quieres recordar los mejores momentos? Aquí respondemos las dudas sobre la
-        increíble edición que vivimos en Ibagué.
+<section id="faq-recap" class="py-24 sm:py-32">
+  <div class="container mx-auto px-6">
+    <div class="mx-auto max-w-3xl text-center">
+      <h2 class="font-special text-4xl font-bold text-light sm:text-5xl">Preguntas Frecuentes</h2>
+      <p class="mt-4 text-lg text-light/70">
+        Resolvemos tus dudas para que te animes a vivir la experiencia.
       </p>
     </div>
-    <div class="mt-16 flow-root">
-      <div class="accordion-container -my-4 divide-y divide-white/10">
-        <div class="faq-item pt-6">
-          <button class="faq-question">
-            <span>¿Qué fue exactamente "Creer y Crear 2025"?</span>
-            <span class="icon">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
+    <div class="mt-16 mx-auto max-w-4xl">
+      <div class="space-y-6">
+        {
+          faqs.map((faq, index) => (
+            <div class="faq-item liquid-glass rounded-2xl p-6 shadow-lg">
+              <button
+                class="faq-question flex w-full items-center justify-between text-left text-lg font-semibold text-light"
+                aria-expanded="false"
+                aria-controls={`faq-answer-${index}`}
               >
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"
-                ></path>
-              </svg>
-            </span>
-          </button>
-          <div class="faq-answer">
-            <p>
-              "Creer y Crear 2025" fue un evento transformador celebrado en Ibagué que reunió a
-              jóvenes soñadores, estudiantes, emprendedores y creadores de contenido en un solo
-              lugar. Su propósito fue empoderar a las nuevas generaciones a través de experiencias
-              motivadoras, charlas impactantes, talleres de formación y momentos que inspiran a
-              soñar en grande y actuar con propósito.
-            </p>
-          </div>
-        </div>
-
-        <div class="faq-item pt-6">
-          <button class="faq-question">
-            <span>¿Dónde y cuándo se realizó el evento?</span>
-            <span class="icon">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
+                <span>{faq.question}</span>
+                <svg
+                  class="faq-icon h-6 w-6 shrink-0 transform transition-transform duration-300"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </button>
+              <div
+                id={`faq-answer-${index}`}
+                class="faq-answer mt-4 max-h-0 overflow-hidden transition-all duration-500 ease-in-out"
               >
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"
-                ></path>
-              </svg>
-            </span>
-          </button>
-          <div class="faq-answer">
-            <p>
-              El evento se llevó a cabo en el <strong>Centro Comercial Multicentro</strong> en <strong
-                >Ibagué, Tolima</strong
-              >, los días <strong>sábado 14 y domingo 15 de junio de 2025</strong>. Durante esos dos
-              días, la ciudad se convirtió en un epicentro de creatividad, motivación e innovación
-              juvenil.
-            </p>
-          </div>
-        </div>
-
-        <div class="faq-item pt-6">
-          <button class="faq-question">
-            <span>¿Qué tipo de actividades hubo?</span>
-            <span class="icon">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-              >
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"
-                ></path>
-              </svg>
-            </span>
-          </button>
-          <div class="faq-answer">
-            <p>
-              El evento contó con charlas inspiradoras de reconocidos creadores como <strong
-                >Lola Lolita</strong
-              > y <strong>Juanse Black</strong>, talleres prácticos, dinámicas grupales, zonas de
-              experiencia, firmas de autógrafos, presentaciones artísticas en vivo, espacios de
-              networking y stands de emprendimientos.
-            </p>
-          </div>
-        </div>
-
-        <div class="faq-item pt-6">
-          <button class="faq-question">
-            <span>¿Hay contenido para revivir lo vivido?</span>
-            <span class="icon">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-              >
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"
-                ></path>
-              </svg>
-            </span>
-          </button>
-          <div class="faq-answer">
-            <p>
-              Sí, puedes encontrar fotografías y videos con los mejores momentos buscando el hashtag <strong
-                >#CreerYCrearIbg</strong
-              > en redes como TikTok e Instagram. También puedes ver este video de Juanse Black invitando
-              al evento:
-            </p>
-            <div class="mt-4">
-              <blockquote
-                class="tiktok-embed"
-                cite="https://www.tiktok.com/@juanseblack/video/7507250328631364920"
-                data-video-id="7507250328631364920"
-                style="max-width: 605px;min-width: 325px;"
-              >
-                <section>
-                  <a
-                    target="_blank"
-                    title="@juanseblack"
-                    href="https://www.tiktok.com/@juanseblack?refer=embed">@juanseblack</a
-                  >
-                  Nos vemos el Domingoooo 🖤⚡️✨
-                  <a title="#CreeryCrear" href="https://www.tiktok.com/tag/creerycrear?refer=embed"
-                    >#CreeryCrear</a
-                  >
-                  <a
-                    title="#EventoIbague"
-                    href="https://www.tiktok.com/tag/eventoibague?refer=embed">#EventoIbague</a
-                  >
-                </section>
-              </blockquote>
-              <script async src="https://www.tiktok.com/embed.js"></script>
+                <p class="text-light/80">{faq.answer}</p>
+              </div>
             </div>
-          </div>
-        </div>
-
-        <div class="faq-item pt-6">
-          <button class="faq-question">
-            <span>¿Habrá más ediciones en el futuro?</span>
-            <span class="icon">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-              >
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"
-                ></path>
-              </svg>
-            </span>
-          </button>
-          <div class="faq-answer">
-            <p>
-              ¡Eso esperamos! El impacto de "Creer y Crear 2025" ha sido tan positivo que ya estamos
-              soñando con nuevas ediciones. Te invitamos a seguir nuestras redes sociales para
-              enterarte primero de futuras fechas y ciudades.
-            </p>
-          </div>
-        </div>
+          ))
+        }
       </div>
     </div>
   </div>
 </section>
-
-<style>
-  @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
-
-  #faq-recap {
-    background-color: #111827;
-    font-family: "Poppins", sans-serif;
-  }
-  .scroll-indicator {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    will-change: transform;
-    animation: bounce 2s infinite;
-  }
-  .scroll-arrow {
-    width: 2px;
-    height: 30px;
-    background: linear-gradient(to bottom, transparent, white);
-    position: relative;
-  }
-  .scroll-arrow::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: -3px;
-    width: 8px;
-    height: 8px;
-    border-right: 2px solid white;
-    border-bottom: 2px solid white;
-    transform: rotate(45deg);
-  }
-  .magic-text {
-    background: linear-gradient(to right, #a855f7, #60a5fa, #a855f7);
-    background-size: 200%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: background-pan 3s linear infinite;
-  }
-
-  @keyframes background-pan {
-    from {
-      background-position: 0% center;
-    }
-    to {
-      background-position: -200% center;
-    }
-  }
-
-  .accordion-container {
-    max-width: 768px;
-    margin: 0 auto;
-  }
-
-  .faq-item {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    padding-bottom: 1.5rem;
-  }
-
-  .faq-item:last-child {
-    border-bottom: none;
-  }
-
-  .faq-question {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    text-align: left;
-    padding: 1rem 0;
-    font-size: 1.125rem;
-    font-weight: 600;
-    color: white;
-    background: none;
-    border: none;
-    cursor: pointer;
-    transition: color 0.3s ease;
-  }
-
-  .faq-question:hover {
-    color: #93c5fd;
-  }
-
-  .faq-question .icon {
-    width: 1.5rem;
-    height: 1.5rem;
-    color: #a78bfa;
-    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-    flex-shrink: 0;
-    margin-left: 1rem;
-  }
-
-  .faq-item.active .faq-question .icon {
-    transform: rotate(135deg);
-  }
-
-  .faq-answer {
-    max-height: 0;
-    overflow: hidden;
-    color: #d1d5db;
-    transition:
-      max-height 0.5s cubic-bezier(0.25, 1, 0.5, 1),
-      padding 0.5s ease;
-    padding-right: 2.5rem;
-  }
-
-  .faq-answer p {
-    padding: 0;
-    margin: 0;
-    line-height: 1.75;
-  }
-</style>
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     const faqItems = document.querySelectorAll(".faq-item")
 
     faqItems.forEach((item) => {
-      const button = item.querySelector(".faq-question")
-      const answer = item.querySelector(".faq-answer")
+      const button = item.querySelector(".faq-question") as HTMLButtonElement | null
+      const answer = item.querySelector(".faq-answer") as HTMLElement | null
+      const icon = item.querySelector(".faq-icon") as HTMLElement | null
 
-      if (button && answer) {
+      if (button && answer && icon) {
         button.addEventListener("click", () => {
-          const wasActive = item.classList.contains("active")
+          const isExpanded = button.getAttribute("aria-expanded") === "true"
 
-          if (!wasActive) {
-            item.classList.add("active")
-            ;(answer as HTMLElement).style.maxHeight = (answer as HTMLElement).scrollHeight + "px"
+          button.setAttribute("aria-expanded", String(!isExpanded))
+          if (isExpanded) {
+            answer.style.maxHeight = "0"
+            icon.style.transform = "rotate(0deg)"
           } else {
-            item.classList.remove("active")
-            ;(answer as HTMLElement).style.maxHeight = "0px"
+            answer.style.maxHeight = answer.scrollHeight + "px"
+            icon.style.transform = "rotate(-180deg)"
           }
         })
-        ;(answer as HTMLElement).style.maxHeight = "0px"
-        item.classList.remove("active")
       }
     })
   })

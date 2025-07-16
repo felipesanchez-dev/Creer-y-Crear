@@ -1,0 +1,109 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
+
+#faq-recap {
+  background-color: #111827;
+  font-family: "Poppins", sans-serif;
+}
+.scroll-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  will-change: transform;
+  animation: bounce 2s infinite;
+}
+.scroll-arrow {
+  width: 2px;
+  height: 30px;
+  background: linear-gradient(to bottom, transparent, white);
+  position: relative;
+}
+.scroll-arrow::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: -3px;
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid white;
+  border-bottom: 2px solid white;
+  transform: rotate(45deg);
+}
+.magic-text {
+  background: linear-gradient(to right, #a855f7, #60a5fa, #a855f7);
+  background-size: 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: background-pan 3s linear infinite;
+}
+
+@keyframes background-pan {
+  from {
+    background-position: 0% center;
+  }
+  to {
+    background-position: -200% center;
+  }
+}
+
+.accordion-container {
+  max-width: 768px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 1.5rem;
+}
+
+.faq-item:last-child {
+  border-bottom: none;
+}
+
+.faq-question {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+  padding: 1rem 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: white;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.faq-question:hover {
+  color: #93c5fd;
+}
+
+.faq-question .icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #a78bfa;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  flex-shrink: 0;
+  margin-left: 1rem;
+}
+
+.faq-item.active .faq-question .icon {
+  transform: rotate(135deg);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  color: #d1d5db;
+  transition:
+    max-height 0.5s cubic-bezier(0.25, 1, 0.5, 1),
+    padding 0.5s ease;
+  padding-right: 2.5rem;
+}
+
+.faq-answer p {
+  padding: 0;
+  margin: 0;
+  line-height: 1.75;
+}

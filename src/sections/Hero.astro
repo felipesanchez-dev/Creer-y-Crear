@@ -1,69 +1,71 @@
 ---
 import DotBackground from "../components/DotBackground.astro"
+import "@/styles/Hero.css"
 ---
 
-<section class="relative h-[100svh] w-full overflow-hidden">
+<section class="relative h-[100svh] w-full overflow-hidden bg-primary">
   <DotBackground />
 
   <div class="hero-background absolute inset-0">
     <img
-      src="/images/imagen.jpg"
-      alt="JuanseBlack en el escenario inspirando a su audiencia"
-      class="absolute inset-0 h-full w-full object-cover"
+      src="/images/hero-blur.jpg"
+      alt="Fondo galáctico abstracto"
+      class="absolute inset-0 h-full w-full object-cover opacity-50"
       loading="eager"
     />
     <div
-      class="absolute inset-0 bg-gradient-to-br from-purple-900/80 via-blue-900/70 to-indigo-800/80"
+      class="absolute inset-0 bg-gradient-to-br from-primary via-secondary/80 to-accent-purple/60"
     >
     </div>
-    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent">
-    </div>
+    <div class="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent"></div>
   </div>
 
   <div class="floating-elements pointer-events-none absolute inset-0 z-10">
-    <div class="floating-element floating-circle circle-1"></div>
-    <div class="floating-element floating-circle circle-2"></div>
-    <div class="floating-element floating-circle circle-3"></div>
-    <div class="floating-element floating-triangle triangle-1"></div>
-    <div class="floating-element floating-triangle triangle-2"></div>
-    <div class="floating-element floating-icon icon-1">💫</div>
-    <div class="floating-element floating-icon icon-2">✨</div>
-    <div class="floating-element floating-icon icon-4">💭</div>
-    <div class="floating-element floating-icon icon-5">🎯</div>
+    <div class="floating-element animate-float floating-circle circle-1"></div>
+    <div class="floating-element animate-float floating-circle circle-2" style="animation-delay: 2s;">
+    </div>
+    <div class="floating-element animate-float floating-circle circle-3" style="animation-delay: 4s;">
+    </div>
+    <div class="floating-element animate-float floating-icon icon-1">💫</div>
+    <div class="floating-element animate-float floating-icon icon-2" style="animation-delay: 1s;">✨</div>
+    <div class="floating-element animate-float floating-icon icon-4" style="animation-delay: 3s;">💭</div>
+    <div class="floating-element animate-float floating-icon icon-5" style="animation-delay: 4s;">🎯</div>
   </div>
 
-  <div class="hero-content relative z-20 flex min-h-full items-center">
+  <div class="relative z-20 flex min-h-full items-center">
     <div class="container mx-auto px-6 py-20">
       <div class="grid items-center gap-12 lg:grid-cols-2">
         <div class="space-y-8 text-center lg:text-left">
           <div>
-            <h1 class="hero-title-main">
+            <h1 class="font-special text-7xl font-bold leading-tight text-light md:text-8xl">
               <span class="title-part title-part-1">Creer</span>
-              <span class="title-connector">&</span>
+              <span class="title-connector text-accent-pink">&</span>
               <span class="title-part title-part-2">Crear</span>
             </h1>
-            <p class="hero-subtitle">Un espacio para compartir historias</p>
+            <p class="hero-subtitle mt-2 text-xl text-light/80 md:text-2xl">
+              Un espacio para compartir historias
+            </p>
           </div>
 
           <div class="space-y-4">
-            <p class="hero-description text-lg leading-relaxed">
-              Aquí se vale <strong class="text-yellow-300">sentir</strong>,
-              <strong class="text-blue-300">imaginar</strong>,
-              <strong class="text-pink-300">equivocarse</strong> y volver a
-              <strong class="text-green-300">creer</strong> para crear algo poderoso:
+            <p class="text-lg leading-relaxed text-light/90">
+              Aquí se vale <strong class="text-accent-green">sentir</strong>,
+              <strong class="text-accent-purple">imaginar</strong>,
+              <strong class="text-accent-pink">equivocarse</strong> y volver a
+              <strong class="text-yellow-300">creer</strong> para crear algo poderoso:
               <span class="font-semibold text-white">tu camino más auténtico</span>.
             </p>
-            <p class="text-base text-white/80">
+            <p class="text-base text-light/70">
               Un movimiento de consciencia, expresión y transformación personal que acompaña sin
               juicios y celebra la autenticidad.
             </p>
           </div>
 
-          <a href="https://www.atom.bio/juanseblack">
+          <a href="https://www.atom.bio/juanseblack" target="_blank" rel="noopener noreferrer">
             <div class="hero-author-section">
               <div class="flex items-center justify-center gap-4 lg:justify-start">
                 <div
-                  class="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-yellow-400 to-orange-500 text-lg font-bold text-white shadow-lg"
+                  class="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-accent-purple to-accent-pink text-lg font-bold text-white shadow-lg"
                 >
                   <img
                     src="/avatar.jpg"
@@ -73,7 +75,7 @@ import DotBackground from "../components/DotBackground.astro"
                 </div>
                 <div class="text-left">
                   <div class="font-semibold text-white">JuanseBlack</div>
-                  <div class="text-sm text-white/60">Creador • Ibagué, Tolima</div>
+                  <div class="text-sm text-light/60">Creador • Ibagué, Tolima</div>
                 </div>
               </div>
             </div>
@@ -82,18 +84,20 @@ import DotBackground from "../components/DotBackground.astro"
 
         <div class="hidden lg:block">
           <div class="relative">
-            <div class="hero-image-showcase">
+            <div
+              class="hero-image-showcase rounded-3xl p-1 shadow-2xl backdrop-blur-md transition-transform duration-500 hover:scale-105"
+            >
               <img
                 src="/images/imagen.jpg"
                 alt="JuanseBlack conectando con su audiencia"
-                class="h-auto w-full transform rounded-3xl shadow-2xl transition-transform duration-500 hover:scale-105"
+                class="h-auto w-full rounded-2xl"
                 loading="eager"
               />
               <div
-                class="absolute right-6 bottom-6 left-6 rounded-2xl bg-black/60 p-4 backdrop-blur-sm"
+                class="absolute inset-x-4 bottom-4 rounded-2xl bg-primary/60 p-4 backdrop-blur-sm"
               >
                 <p class="text-sm font-medium text-white">"¿Cuál es tu propósito?"</p>
-                <p class="text-xs text-white/70">La pregunta que cambia todo</p>
+                <p class="text-xs text-light/70">La pregunta que cambia todo</p>
               </div>
             </div>
           </div>
@@ -103,325 +107,9 @@ import DotBackground from "../components/DotBackground.astro"
   </div>
 
   <div class="absolute bottom-8 left-1/2 z-20 -translate-x-1/2 transform">
-    <div class="scroll-indicator">
+    <div class="scroll-indicator animate-bounce">
       <div class="scroll-arrow"></div>
-      <p class="mt-2 text-xs text-white/60">Descubre más</p>
+      <p class="mt-2 text-xs text-light/60">Descubre más</p>
     </div>
   </div>
 </section>
-<br />
-<br />
-<br />
-<br />
-<br />
-<style>
-  :root {
-    --font-main: "Montserrat", sans-serif;
-    --color-text-primary: rgba(255, 255, 255, 0.9);
-    --color-text-secondary: rgba(255, 255, 255, 0.8);
-    --color-text-muted: rgba(255, 255, 255, 0.6);
-    --color-accent-1: #ff6b6b;
-    --color-accent-2: #feca57;
-    --border-radius-pill: 50px;
-    --shadow-cta: 0 4px 20px rgba(255, 107, 107, 0.4);
-    --shadow-cta-hover: 0 8px 25px rgba(255, 107, 107, 0.6);
-  }
-
-  .hero-background {
-    z-index: 0;
-  }
-  .container {
-    max-width: 1200px;
-  }
-
-  .hero-title-main {
-    font-family: var(--font-main);
-    font-size: clamp(3.5rem, 8vw, 7rem);
-    font-weight: 900;
-    line-height: 0.9;
-    margin: 0;
-    color: white;
-    text-shadow: 0 3px 15px rgba(0, 0, 0, 0.4);
-  }
-
-  .title-part {
-    display: inline-block;
-    will-change: transform;
-    animation: titleFloat 3s ease-in-out infinite alternate;
-  }
-  .title-part-2 {
-    animation-delay: 0.5s;
-  }
-  .title-connector {
-    font-size: 0.7em;
-    color: var(--color-text-primary);
-    margin: 0 1rem;
-    font-weight: 700;
-    text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
-    will-change: transform, opacity;
-    animation: connectorPulse 2s ease-in-out infinite;
-  }
-
-  .hero-subtitle {
-    font-family: var(--font-main);
-    font-size: clamp(1.1rem, 3vw, 1.5rem);
-    font-weight: 500;
-    color: var(--color-text-primary);
-    min-height: 3rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  @media (min-width: 1024px) {
-    .hero-subtitle {
-      justify-content: flex-start;
-    }
-  }
-
-  .hero-description {
-    font-family: var(--font-main);
-    color: var(--color-text-primary);
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  @media (min-width: 1024px) {
-    .hero-description {
-      margin-left: 0;
-      margin-right: 0;
-    }
-  }
-
-  .cta-button {
-    font-weight: 600;
-    font-size: 1rem;
-    padding: 1rem 2rem;
-    border-radius: var(--border-radius-pill);
-    border: none;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-    text-decoration: none;
-  }
-  .cta-button-primary {
-    background: linear-gradient(135deg, var(--color-accent-1), var(--color-accent-2));
-    color: white;
-    box-shadow: var(--shadow-cta);
-  }
-  .cta-button-primary::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    transition: left 0.5s;
-  }
-  .cta-button-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-cta-hover);
-  }
-  .cta-button-primary:hover::before {
-    left: 100%;
-  }
-
-  .cta-button-secondary {
-    background: rgba(255, 255, 255, 0.1);
-    color: white;
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(10px);
-  }
-  .cta-button-secondary:hover {
-    background: rgba(255, 255, 255, 0.2);
-    border-color: rgba(255, 255, 255, 0.4);
-    transform: translateY(-2px);
-  }
-
-  .floating-element {
-    position: absolute;
-    pointer-events: none;
-    will-change: transform;
-  }
-  .floating-circle {
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    animation: floatCircle 8s ease-in-out infinite;
-  }
-  .circle-1 {
-    width: 100px;
-    height: 100px;
-    top: 15%;
-    left: 5%;
-    animation-delay: 0s;
-  }
-  .circle-2 {
-    width: 80px;
-    height: 80px;
-    top: 70%;
-    right: 10%;
-    animation-delay: 2s;
-  }
-  .circle-3 {
-    width: 60px;
-    height: 60px;
-    bottom: 15%;
-    left: 15%;
-    animation-delay: 4s;
-  }
-
-  .floating-triangle {
-    width: 0;
-    height: 0;
-    animation: floatTriangle 10s ease-in-out infinite;
-  }
-  .triangle-1 {
-    border-left: 25px solid transparent;
-    border-right: 25px solid transparent;
-    border-bottom: 40px solid rgba(255, 255, 255, 0.1);
-    top: 25%;
-    right: 25%;
-    animation-delay: 1s;
-  }
-  .triangle-2 {
-    border-left: 20px solid transparent;
-    border-right: 20px solid transparent;
-    border-bottom: 30px solid rgba(255, 255, 255, 0.1);
-    bottom: 25%;
-    right: 5%;
-    animation-delay: 3s;
-  }
-
-  .floating-icon {
-    font-size: 2rem;
-    opacity: 0.8;
-    animation: floatIcon 6s ease-in-out infinite;
-  }
-  .icon-1 {
-    top: 10%;
-    left: 10%;
-    animation-delay: 0s;
-  }
-  .icon-2 {
-    top: 30%;
-    right: 15%;
-    animation-delay: 1s;
-  }
-  .icon-4 {
-    top: 60%;
-    right: 30%;
-    animation-delay: 3s;
-  }
-  .icon-5 {
-    bottom: 15%;
-    right: 20%;
-    animation-delay: 4s;
-  }
-
-  .scroll-indicator {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    will-change: transform;
-    animation: bounce 2s infinite;
-  }
-  .scroll-arrow {
-    width: 2px;
-    height: 30px;
-    background: linear-gradient(to bottom, transparent, white);
-    position: relative;
-  }
-  .scroll-arrow::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: -3px;
-    width: 8px;
-    height: 8px;
-    border-right: 2px solid white;
-    border-bottom: 2px solid white;
-    transform: rotate(45deg);
-  }
-
-  @keyframes titleFloat {
-    from {
-      transform: translateY(0);
-    }
-    to {
-      transform: translateY(-8px);
-    }
-  }
-  @keyframes connectorPulse {
-    0%,
-    100% {
-      opacity: 1;
-      transform: scale(1);
-    }
-    50% {
-      opacity: 0.8;
-      transform: scale(1.1);
-    }
-  }
-  @keyframes floatCircle {
-    50% {
-      transform: translateY(-20px) rotate(180deg);
-    }
-  }
-  @keyframes floatTriangle {
-    50% {
-      transform: translateY(-15px) rotate(360deg);
-    }
-  }
-  @keyframes floatIcon {
-    50% {
-      transform: translateY(-10px) scale(1.1);
-    }
-  }
-  @keyframes bounce {
-    0%,
-    20%,
-    50%,
-    80%,
-    100% {
-      transform: translateY(0);
-    }
-    40% {
-      transform: translateY(-10px);
-    }
-    60% {
-      transform: translateY(-5px);
-    }
-  }
-
-  @media (max-width: 768px) {
-    .hero-title-main {
-      font-size: clamp(2.5rem, 12vw, 4rem);
-    }
-    .hero-subtitle {
-      font-size: clamp(1rem, 4vw, 1.2rem);
-    }
-    .hero-description {
-      font-size: 1rem;
-    }
-    .cta-button {
-      padding: 0.875rem 1.5rem;
-      font-size: 0.9rem;
-    }
-    .floating-icon {
-      font-size: 1.5rem;
-    }
-  }
-  @media (max-width: 480px) {
-    .hero-content {
-      padding-top: 5rem;
-      padding-bottom: 5rem;
-    }
-  }
-</style>
