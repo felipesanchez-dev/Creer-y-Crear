@@ -6,75 +6,262 @@ import "@fontsource/poppins/700.css"
 import "@fontsource/poppins/900.css"
 import Header from "@/components/Header.astro"
 import BackToTop from "@/components/BackToTop.astro"
+import { SEO } from "astro-seo"
 
 import "@/styles/global.css"
 
 interface Props {
   title?: string
+  description?: string
+  image?: string
+  canonical?: string
 }
 
-const { title = "Creer y Crear · Un espacio de inspiración con JuanseBlack en Ibagué" } =
-  Astro.props
+const {
+  title = "Creer y Crear · Un espacio de inspiración con JuanseBlack en Ibagué",
+  description = "Creer y Crear es una iniciativa de JuanseBlack desde Ibagué, Tolima. Un espacio abierto al público donde jóvenes y personas de todas las edades comparten experiencias, reciben apoyo y crean comunidad auténtica.",
+  image = "/images/imagen.jpg",
+  canonical,
+} = Astro.props
+
+const siteUrl = "https://www.creerycrear.com"
+const fullImageUrl = `${siteUrl}${image}`
+const fullCanonicalUrl = canonical ? `${siteUrl}${canonical}` : `${siteUrl}${Astro.url.pathname}`
+
 const preloadImg = "/images/imagen.jpg"
+
+// Información del desarrollador
+const developerInfo = {
+  name: "Felipe Reyes Sánchez",
+  title: "Full Stack Developer",
+  email: "jfelipe9.121@gmail.com",
+  website: "https://felipesanchezdev.site",
+  location: "Ibagué, Tolima - Colombia",
+  technologies: ["Astro", "TypeScript", "Tailwind CSS", "React", "Node.js"],
+  year: new Date().getFullYear(),
+}
 ---
 
 <!doctype html>
 <html lang="es" class="scroll-smooth">
   <head>
+    <!-- Créditos del desarrollador -->
+    <!--
+      🚀 Sitio web desarrollado por Felipe Reyes Sánchez
+      📧 Email: jfelipe9.121@gmail.com
+      🌐 Portfolio: https://felipesanchezdev.site
+      📍 Ibagué, Tolima - Colombia
+      💜 Desarrollado con pasión para Creer y Crear
+      🛠️ Stack: Astro + TypeScript + Tailwind CSS
+    -->
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preload" as="image" href={preloadImg} />
-    <title>{title}</title>
-    <meta
-      name="description"
-      content="Creer y Crear es una iniciativa de JuanseBlack desde Ibagué, Tolima. Un espacio abierto al público donde jóvenes y personas de todas las edades comparten experiencias, reciben apoyo y crean comunidad."
-    />
-    <meta
-      name="keywords"
-      content="Creer y Crear, JuanseBlack, Ibagué, Tolima, apoyo juvenil, inspiración, comunidad, experiencias de vida, crecimiento personal"
-    />
-    <link rel="icon" type="image/svg+xml" href="/avatar.jpg" style="border-radius: 100%;" />
 
-    <meta property="og:title" content="Creer y Crear · JuanseBlack desde Ibagué" />
-    <meta
-      property="og:description"
-      content="Un espacio de encuentro y crecimiento impulsado por JuanseBlack, donde se cree en uno mismo y se crean nuevas realidades. Inspiración, escucha y comunidad desde Ibagué, Tolima."
+    <SEO
+      title={title}
+      description={description}
+      canonical={fullCanonicalUrl}
+      charset="UTF-8"
+      openGraph={{
+        basic: {
+          title: title,
+          type: "website",
+          image: fullImageUrl,
+          url: fullCanonicalUrl,
+        },
+        optional: {
+          description: description,
+          siteName: "Creer y Crear - JuanseBlack",
+          locale: "es_CO",
+          determiner: "auto",
+        },
+        image: {
+          alt: "JuanseBlack inspirando a la comunidad en Creer y Crear - Transformando vidas en Ibagué, Tolima",
+          type: "image/jpeg",
+          width: 1200,
+          height: 630,
+        },
+      }}
+      twitter={{
+        card: "summary_large_image",
+        site: "@juanse_black",
+        creator: "@juanse_black",
+        title: title,
+        description: description,
+        image: fullImageUrl,
+        imageAlt: "JuanseBlack - Creer y Crear: Movimiento de transformación personal en Ibagué",
+      }}
+      extend={{
+        link: [
+          { rel: "icon", type: "image/jpeg", href: "/avatar.jpg" },
+          { rel: "apple-touch-icon", href: "/avatar.jpg" },
+          { rel: "preconnect", href: "https://fonts.googleapis.com" },
+          { rel: "preconnect", href: "https://fonts.gstatic.com", crossorigin: "anonymous" },
+          { rel: "canonical", href: fullCanonicalUrl },
+        ],
+        meta: [
+          {
+            name: "keywords",
+            content:
+              "Creer y Crear, JuanseBlack, Ibagué, Tolima, Colombia, apoyo juvenil, inspiración, motivación, comunidad, experiencias de vida, crecimiento personal, transformación personal, historias reales, autenticidad, propósito de vida, desarrollo personal, bienestar emocional, mentoría, liderazgo juvenil, emprendimiento personal, superación, mindfulness, coaching de vida, terapia grupal, círculos de apoyo, testimonios de vida, influencer positivo, contenido inspiracional, redes sociales motivacionales, TikTok inspiracional, Instagram motivacional, YouTube crecimiento, movimiento social, cambio positivo, esperanza, fe, creer en uno mismo, crear tu destino, Felipe Reyes Sánchez, desarrollador web Ibagué",
+          },
+          { name: "author", content: "JuanseBlack" },
+          { name: "creator", content: "Felipe Reyes Sánchez - felipesanchezdev.site" },
+          { name: "developer", content: "Felipe Reyes Sánchez" },
+          { name: "designer", content: "Felipe Reyes Sánchez" },
+          {
+            name: "robots",
+            content: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+          },
+          { name: "googlebot", content: "index, follow" },
+          { name: "theme-color", content: "#8b5cf6" },
+          { name: "color-scheme", content: "light dark" },
+          { name: "format-detection", content: "telephone=no" },
+          { name: "geo.region", content: "CO-TOL" },
+          { name: "geo.placename", content: "Ibagué, Tolima" },
+          { name: "geo.position", content: "4.4389;-75.2322" },
+          { name: "ICBM", content: "4.4389, -75.2322" },
+          { property: "og:locale:alternate", content: "en_US" },
+          { property: "og:locale:alternate", content: "es_ES" },
+          { property: "og:type", content: "website" },
+          { property: "og:site_name", content: "Creer y Crear" },
+          { property: "article:author", content: "JuanseBlack" },
+          { property: "article:publisher", content: "https://www.instagram.com/juanse_black" },
+          { name: "twitter:domain", content: "creerycrear.com" },
+          { name: "twitter:url", content: fullCanonicalUrl },
+          { name: "application-name", content: "Creer y Crear" },
+          { name: "apple-mobile-web-app-title", content: "Creer y Crear" },
+          { name: "apple-mobile-web-app-capable", content: "yes" },
+          { name: "apple-mobile-web-app-status-bar-style", content: "black-translucent" },
+          { name: "msapplication-TileColor", content: "#8b5cf6" },
+          { name: "msapplication-config", content: "/browserconfig.xml" },
+        ],
+      }}
     />
-    <meta property="og:image" content="/images/imagen.jpg" />
-    <meta property="og:url" content="https://www.creerycrear.com/" />
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Creer y Crear" />
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Creer y Crear · JuanseBlack en Ibagué" />
-    <meta
-      name="twitter:description"
-      content="Iniciativa de JuanseBlack para inspirar, escuchar y acompañar a jóvenes y personas de todas las edades. Desde Ibagué para el mundo, un espacio para compartir y crecer."
-    />
-    <meta name="twitter:image" content="/images/imagen.jpg" />
-    <meta name="twitter:url" content="https://www.creerycrear.com/" />
-
-    <script type="application/ld+json">
-      {
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
         "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "Creer y Crear",
-        "url": "https://www.creerycrear.com",
-        "logo": "https://www.creerycrear.com/images/imagen.jpg",
-        "founder": {
-          "@type": "Person",
-          "name": "JuanseBlack",
-          "sameAs": ["https://instagram.com/JuanseBlack", "https://www.tiktok.com/@JuanseBlack"]
-        },
-        "description": "Creer y Crear es un espacio abierto al público donde se comparten experiencias reales, se escucha con empatía y se brinda apoyo emocional. Un proyecto social desde Ibagué, Tolima, creado por JuanseBlack.",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Ibagué",
-          "addressRegion": "Tolima",
-          "addressCountry": "CO"
-        },
-        "sameAs": ["https://www.creerycrear.com"]
-      }
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": `${siteUrl}/#organization`,
+            name: "Creer y Crear",
+            url: siteUrl,
+            logo: {
+              "@type": "ImageObject",
+              url: fullImageUrl,
+              width: 1200,
+              height: 630,
+            },
+            founder: {
+              "@type": "Person",
+              name: "JuanseBlack",
+              alternateName: "Juan Sebastian",
+              sameAs: [
+                "https://instagram.com/juanse_black",
+                "https://www.tiktok.com/@juanseblack",
+                "https://youtube.com/@juanseblack",
+              ],
+              address: {
+                "@type": "PostalAddress",
+                addressLocality: "Ibagué",
+                addressRegion: "Tolima",
+                addressCountry: "CO",
+              },
+            },
+            description: description,
+            address: {
+              "@type": "PostalAddress",
+              addressLocality: "Ibagué",
+              addressRegion: "Tolima",
+              addressCountry: "CO",
+            },
+            sameAs: [siteUrl],
+            knowsAbout: [
+              "Crecimiento Personal",
+              "Desarrollo Juvenil",
+              "Motivación",
+              "Inspiración",
+              "Comunidad",
+              "Transformación Personal",
+            ],
+          },
+          {
+            "@type": "WebSite",
+            "@id": `${siteUrl}/#website`,
+            url: siteUrl,
+            name: "Creer y Crear",
+            alternateName: "Creer y Crear con JuanseBlack",
+            description: description,
+            publisher: {
+              "@id": `${siteUrl}/#organization`,
+            },
+            inLanguage: "es-CO",
+          },
+          {
+            "@type": "Person",
+            "@id": `${siteUrl}/#developer`,
+            name: "Felipe Reyes Sánchez",
+            jobTitle: "Full Stack Developer",
+            email: "jfelipe9.121@gmail.com",
+            url: "https://felipesanchezdev.site",
+            address: {
+              "@type": "PostalAddress",
+              addressLocality: "Ibagué",
+              addressRegion: "Tolima",
+              addressCountry: "CO",
+            },
+            knowsAbout: ["Astro", "TypeScript", "Tailwind CSS", "React", "Node.js"],
+            alumniOf: "Desarrollador Web",
+            workLocation: "Ibagué, Tolima",
+          },
+        ],
+      })}
+    />
+
+    <!-- Script para mostrar créditos en consola -->
+    <script is:inline>
+      // Esperar a que el DOM esté listo
+      document.addEventListener("DOMContentLoaded", function () {
+        // Créditos del desarrollador en consola
+        const styles = {
+          title:
+            "color: #8b5cf6; font-size: 24px; font-weight: bold; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);",
+          subtitle: "color: #ec4899; font-size: 16px; font-weight: bold;",
+          info: "color: #06b6d4; font-size: 14px;",
+          tech: "color: #10b981; font-size: 12px;",
+          footer: "color: #f59e0b; font-size: 14px; font-weight: bold;",
+        }
+
+        console.log("%c🚀 Creer y Crear", styles.title)
+        console.log("%c✨ Transformando vidas con JuanseBlack", styles.subtitle)
+        console.log("")
+        console.log("%c👨‍💻 Desarrollado por:", styles.info)
+        console.log("%cFelipe Reyes Sánchez", styles.subtitle)
+        console.log("%c📧 jfelipe9.121@gmail.com", styles.info)
+        console.log("%c🌐 https://felipesanchezdev.site", styles.info)
+        console.log("%c📍 Ibagué, Tolima - Colombia", styles.info)
+        console.log("")
+        console.log("%c🛠️ Stack Tecnológico:", styles.info)
+        console.log("%c• Astro Framework", styles.tech)
+        console.log("%c• TypeScript", styles.tech)
+        console.log("%c• Tailwind CSS", styles.tech)
+        console.log("%c• React Components", styles.tech)
+        console.log("%c• Node.js", styles.tech)
+        console.log("")
+        console.log(
+          `%c Desarrollado por Felipe Reyes Sanchez para JuanseBlack - ${new Date().getFullYear()}`,
+          styles.footer
+        )
+        console.log(
+          '%c🌟 "Creer en uno mismo es el primer paso para crear algo extraordinario"',
+          styles.subtitle
+        )
+      })
     </script>
   </head>
 
@@ -82,5 +269,15 @@ const preloadImg = "/images/imagen.jpg"
     <Header />
     <slot />
     <BackToTop />
+
+    <div
+      style="display: none;"
+      data-developer="Felipe Reyes Sánchez"
+      data-email="jfelipe9.121@gmail.com"
+      data-website="https://felipesanchezdev.site"
+      data-year={developerInfo.year}
+    >
+      Desarrollado por Felipe Reyes Sánchez - Full Stack Developer
+    </div>
   </body>
 </html>
