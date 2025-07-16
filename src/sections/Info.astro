@@ -2,6 +2,12 @@
 import { Image } from "astro:assets"
 import CalendarImage from "@/assets/images/calendario.png"
 import esnecario from "@/assets/images/multi.webp"
+
+interface Props {
+  eventoActivo?: boolean
+}
+
+const { eventoActivo = false } = Astro.props
 ---
 
 <div class="mx-auto max-w-2xl p-4 pb-32 lg:max-w-6xl" id="info">
@@ -48,160 +54,172 @@ import esnecario from "@/assets/images/multi.webp"
     </span>
   </div>
   <div
-    class="view-animate-[--subjectReveal] animate-zoom-in animate-range-[entry_0%_cover_20%] grid scroll-mt-[31rem] grid-cols-1 gap-4 pt-10 sm:mt-4 md:scroll-mt-[34rem] lg:scroll-mt-[26rem] lg:grid-cols-6"
+    class="view-animate-[--subjectReveal] animate-zoom-in animate-range-[entry_0%_cover_20%] relative grid scroll-mt-[31rem] grid-cols-1 gap-4 pt-10 sm:mt-4 md:scroll-mt-[34rem] lg:scroll-mt-[26rem] lg:grid-cols-6"
     id="info"
   >
-    <div class="relative lg:col-span-3">
-      <div
-        class="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)] bg-white max-lg:rounded-t-[calc(2rem+1px)] lg:rounded-tl-[calc(2rem+1px)] lg:rounded-bl-[calc(2rem+1px)]"
-      >
-        <div class="relative h-80 w-full overflow-hidden">
-          <Image
-            class="relative h-full w-full [mask-image:linear-gradient(to_bottom,black_80%,transparent_100%)] object-cover object-[85%_center] sm:object-center"
-            src={CalendarImage}
-            width={672}
-            height={320}
-            alt="Calendario con la fecha del evento Lola Lolita Land 14 y 15 de junio de 2025"
-          />
-        </div>
-        <div class="p-4 pt-4 sm:p-6 md:p-8 lg:p-10">
-          <h3 class="text-center text-2xl font-semibold lg:text-left">12 julio</h3>
-          <p
-            class="mx-auto mt-2 max-w-[50ch] text-center text-xs/5 text-balance text-gray-600 sm:text-sm/6 lg:mx-0 lg:text-left"
-          >
-            Apunta en tu calendario, porque Creer y Crear abre sus puertas el 12 de julio ven a
-            disfrutar de un día lleno de magia, diversión y sorpresas. ¡No te lo pierdas!
-          </p>
-          <div class="mt-4 flex flex-col items-center justify-center gap-1 lg:flex-row lg:gap-4">
-            <a
-              class="group inline-flex min-h-[42px] w-full items-center justify-center space-x-2 rounded-full bg-gradient-to-br from-[#3b0764] via-[#312e81] to-[#1e3a8a] px-5 py-2 text-sm font-semibold tracking-wide text-white shadow-lg transition-all duration-300 ease-in-out hover:scale-105 hover:from-[#4c1d95] hover:to-[#1e40af] active:scale-100 lg:w-auto"
-              href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Creer+y+Crear+x+JuanseBlack&dates=20250712/20250713&details=Un+espacio+para+compartir+propósito+y+conectar+con+otros.&location=Ibagué,+Tolima"
-              target="_blank"
-              rel="noopener noreferrer"
+    {
+      !eventoActivo && (
+        <p class="absolute inset-0 z-10 m-auto flex h-full w-full items-center justify-center px-4 text-center text-3xl leading-tight font-extrabold text-white drop-shadow-[0_0_25px_rgba(0,0,0,0.85)] md:text-4xl lg:text-5xl">
+          ¡El evento ya terminó, gracias por participar!
+        </p>
+      )
+    }
+
+    <div class:list={["contents", { "pointer-events-none blur": !eventoActivo }]}>
+      <div class="relative lg:col-span-3">
+        <div
+          class="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)] bg-white max-lg:rounded-t-[calc(2rem+1px)] lg:rounded-tl-[calc(2rem+1px)] lg:rounded-bl-[calc(2rem+1px)]"
+        >
+          <div class="relative h-80 w-full overflow-hidden">
+            <Image
+              class="relative h-full w-full [mask-image:linear-gradient(to_bottom,black_80%,transparent_100%)] object-cover object-[85%_center] sm:object-center"
+              src={CalendarImage}
+              width={672}
+              height={320}
+              alt="Calendario con la fecha del evento Lola Lolita Land 14 y 15 de junio de 2025"
+            />
+          </div>
+          <div class="p-4 pt-4 sm:p-6 md:p-8 lg:p-10">
+            <h3 class="text-center text-2xl font-semibold lg:text-left">12 julio</h3>
+            <p
+              class="mx-auto mt-2 max-w-[50ch] text-center text-xs/5 text-balance text-gray-600 sm:text-sm/6 lg:mx-0 lg:text-left"
             >
-              <svg
-                class="transition-opacity"
-                x="0px"
-                y="0px"
-                width="30"
-                height="30"
-                viewBox="0 0 48 48"
+              Apunta en tu calendario, porque Creer y Crear abre sus puertas el 12 de julio ven a
+              disfrutar de un día lleno de magia, diversión y sorpresas. ¡No te lo pierdas!
+            </p>
+            <div class="mt-4 flex flex-col items-center justify-center gap-1 lg:flex-row lg:gap-4">
+              <a
+                class="group inline-flex min-h-[42px] w-full items-center justify-center space-x-2 rounded-full bg-gradient-to-br from-[#3b0764] via-[#312e81] to-[#1e3a8a] px-5 py-2 text-sm font-semibold tracking-wide text-white shadow-lg transition-all duration-300 ease-in-out hover:scale-105 hover:from-[#4c1d95] hover:to-[#1e40af] active:scale-100 lg:w-auto"
+                href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Creer+y+Crear+x+JuanseBlack&dates=20250712/20250713&details=Un+espacio+para+compartir+propósito+y+conectar+con+otros.&location=Ibagué,+Tolima"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                <rect width="22" height="22" x="13" y="13" fill="#fff"></rect>
-                <polygon
-                  fill="#1e88e5"
-                  points="25.68,20.92 26.688,22.36 28.272,21.208 28.272,29.56 30,29.56 30,18.616 28.56,18.616"
-                ></polygon>
-                <path
-                  fill="#1e88e5"
-                  d="M22.943,23.745c0.625-0.574,1.013-1.37,1.013-2.249c0-1.747-1.533-3.168-3.417-3.168 c-1.602,0-2.972,1.009-3.33,2.453l1.657,0.421c0.165-0.664,0.868-1.146,1.673-1.146c0.942,0,1.709,0.646,1.709,1.44 c0,0.794-0.767,1.44-1.709,1.44h-0.997v1.728h0.997c1.081,0,1.993,0.751,1.993,1.64c0,0.904-0.866,1.64-1.931,1.64 c-0.962,0-1.784-0.61-1.914-1.418L17,26.802c0.262,1.636,1.81,2.87,3.6,2.87c2.007,0,3.64-1.511,3.64-3.368 C24.24,25.281,23.736,24.363,22.943,23.745z"
-                ></path>
-                <polygon fill="#fbc02d" points="34,42 14,42 13,38 14,34 34,34 35,38"></polygon>
-                <polygon fill="#4caf50" points="38,35 42,34 42,14 38,13 34,14 34,34"></polygon>
-                <path fill="#1e88e5" d="M34,14l1-4l-1-4H9C7.343,6,6,7.343,6,9v25l4,1l4-1V14H34z"
-                ></path>
-                <polygon fill="#e53935" points="34,34 34,42 42,34"></polygon>
-                <path fill="#1565c0" d="M39,6h-5v8h8V9C42,7.343,40.657,6,39,6z"></path>
-                <path fill="#1565c0" d="M9,42h5v-8H6v5C6,40.657,7.343,42,9,42z"></path>
-              </svg>
-              <span>Añadir fecha a mi calendario</span>
-            </a>
+                <svg
+                  class="transition-opacity"
+                  x="0px"
+                  y="0px"
+                  width="30"
+                  height="30"
+                  viewBox="0 0 48 48"
+                >
+                  <rect width="22" height="22" x="13" y="13" fill="#fff"></rect>
+                  <polygon
+                    fill="#1e88e5"
+                    points="25.68,20.92 26.688,22.36 28.272,21.208 28.272,29.56 30,29.56 30,18.616 28.56,18.616"
+                  ></polygon>
+                  <path
+                    fill="#1e88e5"
+                    d="M22.943,23.745c0.625-0.574,1.013-1.37,1.013-2.249c0-1.747-1.533-3.168-3.417-3.168 c-1.602,0-2.972,1.009-3.33,2.453l1.657,0.421c0.165-0.664,0.868-1.146,1.673-1.146c0.942,0,1.709,0.646,1.709,1.44 c0,0.794-0.767,1.44-1.709,1.44h-0.997v1.728h0.997c1.081,0,1.993,0.751,1.993,1.64c0,0.904-0.866,1.64-1.931,1.64 c-0.962,0-1.784-0.61-1.914-1.418L17,26.802c0.262,1.636,1.81,2.87,3.6,2.87c2.007,0,3.64-1.511,3.64-3.368 C24.24,25.281,23.736,24.363,22.943,23.745z"
+                  ></path>
+                  <polygon fill="#fbc02d" points="34,42 14,42 13,38 14,34 34,34 35,38"></polygon>
+                  <polygon fill="#4caf50" points="38,35 42,34 42,14 38,13 34,14 34,34"></polygon>
+                  <path fill="#1e88e5" d="M34,14l1-4l-1-4H9C7.343,6,6,7.343,6,9v25l4,1l4-1V14H34z"
+                  ></path>
+                  <polygon fill="#e53935" points="34,34 34,42 42,34"></polygon>
+                  <path fill="#1565c0" d="M39,6h-5v8h8V9C42,7.343,40.657,6,39,6z"></path>
+                  <path fill="#1565c0" d="M9,42h5v-8H6v5C6,40.657,7.343,42,9,42z"></path>
+                </svg>
+                <span>Añadir fecha a mi calendario</span>
+              </a>
+            </div>
           </div>
         </div>
-      </div>
-      <div
-        class="pointer-events-none absolute inset-px rounded-lg shadow-sm ring-1 ring-black/5 max-lg:rounded-t-[2rem] lg:rounded-tl-[2rem] lg:rounded-bl-[2rem]"
-      >
-      </div>
-    </div>
-    <div class="relative lg:col-span-3">
-      <div
-        class="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)] bg-white lg:rounded-tr-[calc(2rem+1px)] lg:rounded-br-[calc(2rem+1px)]"
-      >
-        <div class="relative h-80 w-full overflow-hidden">
-          <Image
-            class="relative h-full w-full [mask-image:linear-gradient(to_bottom,black_80%,transparent_100%)] object-cover object-center"
-            src={esnecario}
-            alt="Creer y Crear en multicentro ibague"
-            width={1000}
-            height={513}
-          />
-        </div>
-        <div class="p-4 pt-4 sm:p-6 md:p-8 lg:p-10">
-          <h3 class="text-center text-2xl font-semibold lg:text-left">El mejor parche de Ibagué</h3>
-          <p
-            class="mx-auto mt-2 max-w-[50ch] text-center text-xs/5 text-balance text-gray-600 sm:text-sm/6 lg:mx-0 lg:text-left"
-          >
-            Sumérgete en un mundo de creatividad y apoyo con Creer y Crear, donde la magia de la
-            imaginación cobra vida. Disfruta de actividades emocionantes, espectáculos cautivadores
-            y momentos inolvidables en Multicentro.
-          </p>
+        <div
+          class="pointer-events-none absolute inset-px rounded-lg shadow-sm ring-1 ring-black/5 max-lg:rounded-t-[2rem] lg:rounded-tl-[2rem] lg:rounded-bl-[2rem]"
+        >
         </div>
       </div>
-      <div
-        class="pointer-events-none absolute inset-px rounded-lg shadow-sm ring-1 ring-black/5 lg:rounded-tr-[2rem] lg:rounded-br-[2rem]"
-      >
+      <div class="relative lg:col-span-3">
+        <div
+          class="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)] bg-white lg:rounded-tr-[calc(2rem+1px)] lg:rounded-br-[calc(2rem+1px)]"
+        >
+          <div class="relative h-80 w-full overflow-hidden">
+            <Image
+              class="relative h-full w-full [mask-image:linear-gradient(to_bottom,black_80%,transparent_100%)] object-cover object-center"
+              src={esnecario}
+              alt="Creer y Crear en multicentro ibague"
+              width={1000}
+              height={513}
+            />
+          </div>
+          <div class="p-4 pt-4 sm:p-6 md:p-8 lg:p-10">
+            <h3 class="text-center text-2xl font-semibold lg:text-left">
+              El mejor parche de Ibagué
+            </h3>
+            <p
+              class="mx-auto mt-2 max-w-[50ch] text-center text-xs/5 text-balance text-gray-600 sm:text-sm/6 lg:mx-0 lg:text-left"
+            >
+              Sumérgete en un mundo de creatividad y apoyo con Creer y Crear, donde la magia de la
+              imaginación cobra vida. Disfruta de actividades emocionantes, espectáculos
+              cautivadores y momentos inolvidables en Multicentro.
+            </p>
+          </div>
+        </div>
+        <div
+          class="pointer-events-none absolute inset-px rounded-lg shadow-sm ring-1 ring-black/5 lg:rounded-tr-[2rem] lg:rounded-br-[2rem]"
+        >
+        </div>
       </div>
     </div>
   </div>
+
+  <script>
+    let index = 0
+    let interval = 1000
+
+    const rand = (min: number, max: number) => Math.floor(Math.random() * (max - min + 1)) + min
+
+    const animate = (star: HTMLElement) => {
+      star.style.setProperty("--star-left", `${rand(-10, 100)}%`)
+      star.style.setProperty("--star-top", `${rand(-40, 80)}%`)
+
+      star.style.animation = "none"
+    }
+
+    for (const star of document.getElementsByClassName(
+      "magic-star"
+    ) as HTMLCollectionOf<HTMLElement>) {
+      setTimeout(
+        () => {
+          animate(star)
+
+          setInterval(() => animate(star), interval)
+        },
+        index++ * (interval / 3)
+      )
+    }
+  </script>
+
+  <style>
+    /* letter animation START  */
+    .magic-star {
+      --size: clamp(20px, 1.5vw, 30px);
+      animation: scale 700ms ease forwards;
+      display: block;
+      height: var(--size);
+      left: var(--star-left);
+      position: absolute;
+      top: var(--star-top);
+      width: var(--size);
+    }
+
+    .magic > .magic-star > svg {
+      animation: rotate 1000ms linear infinite;
+      display: block;
+      opacity: 0.7;
+    }
+
+    .magic > .magic-star > svg > path {
+      fill: #dfdf18;
+    }
+
+    .magic > .magic-text {
+      animation: background-pan 3s linear infinite;
+      background: linear-gradient(to right, #383acf, #61e2e5, #383acf, #383acf);
+      background-size: 200%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      white-space: nowrap;
+    }
+  </style>
 </div>
-
-<script>
-  let index = 0
-  let interval = 1000
-
-  const rand = (min: number, max: number) => Math.floor(Math.random() * (max - min + 1)) + min
-
-  const animate = (star: HTMLElement) => {
-    star.style.setProperty("--star-left", `${rand(-10, 100)}%`)
-    star.style.setProperty("--star-top", `${rand(-40, 80)}%`)
-
-    star.style.animation = "none"
-  }
-
-  for (const star of document.getElementsByClassName(
-    "magic-star"
-  ) as HTMLCollectionOf<HTMLElement>) {
-    setTimeout(
-      () => {
-        animate(star)
-
-        setInterval(() => animate(star), interval)
-      },
-      index++ * (interval / 3)
-    )
-  }
-</script>
-
-<style>
-  /* letter animation START  */
-  .magic-star {
-    --size: clamp(20px, 1.5vw, 30px);
-    animation: scale 700ms ease forwards;
-    display: block;
-    height: var(--size);
-    left: var(--star-left);
-    position: absolute;
-    top: var(--star-top);
-    width: var(--size);
-  }
-
-  .magic > .magic-star > svg {
-    animation: rotate 1000ms linear infinite;
-    display: block;
-    opacity: 0.7;
-  }
-
-  .magic > .magic-star > svg > path {
-    fill: #dfdf18;
-  }
-
-  .magic > .magic-text {
-    animation: background-pan 3s linear infinite;
-    background: linear-gradient(to right, #383acf, #61e2e5, #383acf, #383acf);
-    background-size: 200%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    white-space: nowrap;
-  }
-</style>
